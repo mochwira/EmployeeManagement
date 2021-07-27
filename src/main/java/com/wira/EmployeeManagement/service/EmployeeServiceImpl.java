@@ -1,6 +1,6 @@
 package com.wira.EmployeeManagement.service;
 
-import com.wira.EmployeeManagement.model.Employee;
+import com.wira.EmployeeManagement.model.Employees;
 import com.wira.EmployeeManagement.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,25 +19,25 @@ public class EmployeeServiceImpl implements EmployeeService{
     private EmployeeRepository employeeRepository;
 
     @Override
-    public List<Employee> getAllEmployees() {
+    public List<Employees> getAllEmployees() {
         return employeeRepository.findAll();
     }
 
     @Override
-    public void saveEmployee(Employee employee) {
-        this.employeeRepository.save(employee);
+    public void saveEmployee(Employees employees) {
+        this.employeeRepository.save(employees);
     }
 
     @Override
-    public Employee getEmployeeById(long id) {
-        Optional<Employee> optional = employeeRepository.findById(id);
-        Employee employee = null;
+    public Employees getEmployeeById(long id) {
+        Optional<Employees> optional = employeeRepository.findById(id);
+        Employees employees = null;
         if (optional.isPresent()) {
-            employee = optional.get();
+            employees = optional.get();
         } else {
             throw new RuntimeException(" Employee not found for id :: " + id);
         }
-        return employee;
+        return employees;
     }
 
     @Override
@@ -46,11 +46,13 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public Page<Employee> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection) {
+    public Page<Employees> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection) {
         Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
                 Sort.by(sortField).descending();
 
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
         return this.employeeRepository.findAll(pageable);
     }
+
+   
 }

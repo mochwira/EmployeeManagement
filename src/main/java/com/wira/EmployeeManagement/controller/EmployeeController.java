@@ -1,6 +1,7 @@
 package com.wira.EmployeeManagement.controller;
 
-import com.wira.EmployeeManagement.model.Employee;
+
+import com.wira.EmployeeManagement.model.Employees;
 import com.wira.EmployeeManagement.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,15 +26,15 @@ public class EmployeeController {
     @GetMapping("/showNewEmployeeForm")
     public String showNewEmployeeForm(Model model) {
         // create model attribute to bind form data
-        Employee employee = new Employee();
-        model.addAttribute("employee", employee);
+        Employees employees = new Employees();
+        model.addAttribute("employees", employees);
         return "new_employee";
     }
 
     @PostMapping("/saveEmployee")
-    public String saveEmployee(@ModelAttribute("employee") Employee employee) {
+    public String saveEmployee(@ModelAttribute("employee") Employees employees) {
         // save employee to database
-        employeeService.saveEmployee(employee);
+        employeeService.saveEmployee(employees);
         return "redirect:/";
     }
 
@@ -41,10 +42,10 @@ public class EmployeeController {
     public String showFormForUpdate(@PathVariable( value = "id") long id, Model model) {
 
         // get employee from the service
-        Employee employee = employeeService.getEmployeeById(id);
+        Employees employees = employeeService.getEmployeeById(id);
 
         // set employee as a model attribute to pre-populate the form
-        model.addAttribute("employee", employee);
+        model.addAttribute("employees", employees);
         return "update_employee";
     }
 
@@ -64,8 +65,8 @@ public class EmployeeController {
                                 Model model) {
         int pageSize = 5;
 
-        Page<Employee> page = employeeService.findPaginated(pageNo, pageSize, sortField, sortDir);
-        List<Employee> listEmployees = page.getContent();
+        Page<Employees> page = employeeService.findPaginated(pageNo, pageSize, sortField, sortDir);
+        List<Employees> listEmployees = page.getContent();
 
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", page.getTotalPages());

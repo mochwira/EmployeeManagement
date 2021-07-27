@@ -1,10 +1,9 @@
 package com.wira.EmployeeManagement.repository;
 
-
-import com.wira.EmployeeManagement.model.Employees;
+import com.wira.EmployeeManagement.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employees, Long> {
+public interface RoleRepository extends JpaRepository<Role, Long> {
 }
