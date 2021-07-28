@@ -6,7 +6,6 @@
 package com.wira.EmployeeManagement.model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -157,10 +156,6 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "com.wira.EmployeeManagement.model.User[ userId=" + userId + " ]";
-    }
-
-    public Collection<Role> getRoles() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
