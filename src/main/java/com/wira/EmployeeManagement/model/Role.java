@@ -6,6 +6,7 @@
 package com.wira.EmployeeManagement.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -86,6 +87,7 @@ public class Role implements Serializable {
         this.roleStatus = roleStatus;
     }
 
+
     @XmlTransient
     public List<User> getUserList() {
         return userList;
@@ -119,5 +121,7 @@ public class Role implements Serializable {
     public String toString() {
         return "com.wira.EmployeeManagement.model.Role[ roleId=" + roleId + " ]";
     }
+
+
     
 }

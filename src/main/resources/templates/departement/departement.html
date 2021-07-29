@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>Kategori Management</title>
+    <title>Departement Management</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Image -->
@@ -43,14 +43,14 @@
         <thead class="bg-dark text-white">
         <tr>
 <!--            <td>ID Kategori</td>-->
-            <td>Nama Kategori</td>
+            <td>Nama Departement</td>
             <td>Action</td>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="k : ${kategoris}">
+        <tr th:each="d : ${departements}">
 <!--            <td th:text="${k.kategoriId}"></td>-->
-            <td th:text="${k.namaKategori}"></td>
+            <td th:text="${d.namaDepartements}"></td>
             <td>
                 <a class="btn btn-primary text-white eBtn"
                    th:href="@{http://localhost:8082/findone/(kategoriId=${k.kategoriId})}">Edit</a>

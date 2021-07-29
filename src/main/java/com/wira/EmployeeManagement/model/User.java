@@ -6,6 +6,7 @@
 package com.wira.EmployeeManagement.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -65,16 +66,19 @@ public class User implements Serializable {
     public User() {
     }
 
+    private Collection<Role> roles;
+
     public User(Integer userId) {
         this.userId = userId;
     }
 
-    public User(Integer userId, String firstName, String lastName, String email, String password) {
+    public User(Integer userId, String firstName, String lastName, String email, String password, Collection<Role> roles) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.roles = roles;
     }
 
     public Integer getUserId() {
@@ -131,6 +135,13 @@ public class User implements Serializable {
 
     public void setRoleId(Role roleId) {
         this.roleId = roleId;
+    }
+
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 
     @Override
