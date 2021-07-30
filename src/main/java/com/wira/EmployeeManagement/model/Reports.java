@@ -45,7 +45,7 @@ public class Reports implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "report_id")
-    private Integer reportId;
+    private Long reportId;
     @Basic(optional = false)
     @Column(name = "report_name")
     private String reportName;
@@ -67,22 +67,22 @@ public class Reports implements Serializable {
     public Reports() {
     }
 
-    public Reports(Integer reportId) {
+    public Reports(Long reportId) {
         this.reportId = reportId;
     }
 
-    public Reports(Integer reportId, String reportName, int kategoriId, String reportDetail) {
+    public Reports(Long reportId, String reportName, int kategoriId, String reportDetail) {
         this.reportId = reportId;
         this.reportName = reportName;
         this.kategoriId = kategoriId;
         this.reportDetail = reportDetail;
     }
 
-    public Integer getReportId() {
+    public Long getReportId() {
         return reportId;
     }
 
-    public void setReportId(Integer reportId) {
+    public void setReportId(Long reportId) {
         this.reportId = reportId;
     }
 

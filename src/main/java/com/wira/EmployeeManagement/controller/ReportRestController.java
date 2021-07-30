@@ -1,8 +1,6 @@
 package com.wira.EmployeeManagement.controller;
 
-import com.wira.EmployeeManagement.model.Kategori;
 import com.wira.EmployeeManagement.model.Reports;
-import com.wira.EmployeeManagement.repository.KategoriRepository;
 import com.wira.EmployeeManagement.repository.ReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +21,10 @@ public class ReportRestController {
         //init
         r.getReportId();
         r.setReportName(rp.getReportName());
+        r.setKategoriId(rp.getKategoriId());
+        r.setReportDetail(rp.getReportDetail());
+        r.setReportTime(rp.getReportTime());
+        r.setEmployeeId(rp.getEmployeeId());
 
         return r;
     }

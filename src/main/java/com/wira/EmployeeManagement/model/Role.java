@@ -6,7 +6,6 @@
 package com.wira.EmployeeManagement.model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -33,8 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Role.findAll", query = "SELECT r FROM Role r"),
     @NamedQuery(name = "Role.findByRoleId", query = "SELECT r FROM Role r WHERE r.roleId = :roleId"),
-    @NamedQuery(name = "Role.findByName", query = "SELECT r FROM Role r WHERE r.name = :name"),
-    @NamedQuery(name = "Role.findByRoleStatus", query = "SELECT r FROM Role r WHERE r.roleStatus = :roleStatus")})
+    @NamedQuery(name = "Role.findByName", query = "SELECT r FROM Role r WHERE r.name = :name")})
 public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,32 +40,30 @@ public class Role implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "role_id")
-    private Integer roleId;
+    private Long roleId;
     @Basic(optional = false)
     @Column(name = "name")
     private String name;
-    @Column(name = "role_status")
-    private Boolean roleStatus;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "roleId", fetch = FetchType.LAZY)
     private List<User> userList;
 
     public Role() {
     }
 
-    public Role(Integer roleId) {
+    public Role(Long roleId) {
         this.roleId = roleId;
     }
 
-    public Role(Integer roleId, String name) {
+    public Role(Long roleId, String name) {
         this.roleId = roleId;
         this.name = name;
     }
 
-    public Integer getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Integer roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 
@@ -78,15 +74,6 @@ public class Role implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
-    public Boolean getRoleStatus() {
-        return roleStatus;
-    }
-
-    public void setRoleStatus(Boolean roleStatus) {
-        this.roleStatus = roleStatus;
-    }
-
 
     @XmlTransient
     public List<User> getUserList() {
@@ -121,7 +108,5 @@ public class Role implements Serializable {
     public String toString() {
         return "com.wira.EmployeeManagement.model.Role[ roleId=" + roleId + " ]";
     }
-
-
     
 }

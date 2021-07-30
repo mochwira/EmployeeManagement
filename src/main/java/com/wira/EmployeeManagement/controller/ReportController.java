@@ -24,15 +24,12 @@ public class ReportController {
         model.addAttribute("reports", reportRepository.findAll(PageRequest.of(page, 8)));
         model.addAttribute("buatPageReport", page);
         model.addAttribute ( "buatReport", new Reports());
-        return "/kategori/kategori.html";
+        return "/report/report.html";
     }
 
     @PostMapping("/save")
-    //@Valid BindingResult bindingResult
     public String save( Reports reports) {
-//        if(bindingResult.hasErrors()){
-//            return "redirect:/kategori";
-//        }
+
 
         reportRepository.save(reports);
 

@@ -9,14 +9,20 @@ $(document).ready(function(){
             $.getJSON(href, function(response){
             //$('.myForm #kategoriId').val(response.kategoriId).hide(); ini aslinya
                 $('.myForm #reportId').val(response.reportId).hide();
-                $('.myForm #namaReport').val(response.namaReport);
+                $('.myForm #reportName').val(response.reportName);
+                $('.myForm #kategoriId').val(response.kategoriId);
+                $('.myForm #reportDetail').val(response.reportDetail);
+                $('.myForm #reportTime').val(response.reportTime);
             });
             $('.myForm #exampleModal').modal();
         } else {
 //         $('.myForm #kategoriId').val('0').hide(); ini aslinya
             $('.myForm #reportId').val('0').hide();
 
-            $('.myForm #namaReport').val('');
+            $('.myForm #reportName').val('');
+            $('.myForm #kategoriId').val('');
+            $('.myForm #reportDetail').val('');
+            $('.myForm #reportTime').val('');
             $('.myForm #exampleModal').modal();
         }
 
