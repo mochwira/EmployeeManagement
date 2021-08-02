@@ -40,7 +40,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -63,6 +62,7 @@ public class User implements Serializable {
     @JoinColumn(name = "role_id", referencedColumnName = "role_id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Role roleId;
+
     private Collection < Role > roles;
     public User() {
     }
@@ -71,8 +71,14 @@ public class User implements Serializable {
         this.userId = userId;
     }
 
-    public User(Integer userId, String firstName, String lastName, String email, String password, Collection< Role > roles) {
+    public User(Integer userId, String firstName, String lastName, String email, String password) {
         this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
+    public User(String firstName, String lastName, String email, String password, Collection < Role > roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -132,13 +138,11 @@ public class User implements Serializable {
         return roleId;
     }
 
-
-    //Custom Entity
     public void setRoleId(Role roleId) {
         this.roleId = roleId;
     }
-
-    public Collection < Role > getRoles() {
+    
+     public Collection < Role > getRoles() {
         return roles;
     }
 

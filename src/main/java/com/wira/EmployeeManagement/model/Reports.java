@@ -37,7 +37,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Reports.findByReportName", query = "SELECT r FROM Reports r WHERE r.reportName = :reportName"),
     @NamedQuery(name = "Reports.findByKategoriId", query = "SELECT r FROM Reports r WHERE r.kategoriId = :kategoriId"),
     @NamedQuery(name = "Reports.findByReportDetail", query = "SELECT r FROM Reports r WHERE r.reportDetail = :reportDetail"),
-    @NamedQuery(name = "Reports.findByReportTime", query = "SELECT r FROM Reports r WHERE r.reportTime = :reportTime")})
+    @NamedQuery(name = "Reports.findByReportTime", query = "SELECT r FROM Reports r WHERE r.reportTime = :reportTime"),
+    @NamedQuery(name = "Reports.findByProjectId", query = "SELECT r FROM Reports r WHERE r.projectId = :projectId")})
 public class Reports implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,9 +59,14 @@ public class Reports implements Serializable {
     @Column(name = "report_time")
     @Temporal(TemporalType.DATE)
     private Date reportTime;
+    @Basic(optional = false)
+    @Column(name = "project_id")
+    private long projectId;
     @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
     @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Employees employeeId;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "reports", fetch = FetchType.LAZY)
+    private Project project;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "reports", fetch = FetchType.LAZY)
     private Kategori kategori;
 
@@ -71,11 +77,12 @@ public class Reports implements Serializable {
         this.reportId = reportId;
     }
 
-    public Reports(Long reportId, String reportName, int kategoriId, String reportDetail) {
+    public Reports(Long reportId, String reportName, int kategoriId, String reportDetail, long projectId) {
         this.reportId = reportId;
         this.reportName = reportName;
         this.kategoriId = kategoriId;
         this.reportDetail = reportDetail;
+        this.projectId = projectId;
     }
 
     public Long getReportId() {
@@ -118,12 +125,28 @@ public class Reports implements Serializable {
         this.reportTime = reportTime;
     }
 
+    public long getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(long projectId) {
+        this.projectId = projectId;
+    }
+
     public Employees getEmployeeId() {
         return employeeId;
     }
 
     public void setEmployeeId(Employees employeeId) {
         this.employeeId = employeeId;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     public Kategori getKategori() {

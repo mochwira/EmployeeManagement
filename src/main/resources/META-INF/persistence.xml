@@ -9,6 +9,7 @@
     <class>com.wira.EmployeeManagement.model.ReportStatus</class>
     <class>com.wira.EmployeeManagement.model.Role</class>
     <class>com.wira.EmployeeManagement.model.User</class>
+    <class>com.wira.EmployeeManagement.model.Project</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_employee?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
