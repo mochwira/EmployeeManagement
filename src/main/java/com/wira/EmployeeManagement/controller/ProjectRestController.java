@@ -25,8 +25,7 @@ public class ProjectRestController {
         p.setNamaProject(pj.getNamaProject());
         p.setKeteranganProject(pj.getKeteranganProject());
         p.setAsalProject(pj.getAsalProject());
-        p.setAsalProject(pj.getAsalProject());
-
+        p.setDurasiProject(pj.getDurasiProject());
 
         return p;
     }

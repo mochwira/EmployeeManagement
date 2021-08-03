@@ -37,7 +37,7 @@ public class ReportController {
     }
 
     @GetMapping("/delete")
-    public String deleteReport(@RequestParam("reportId") int reportId) {
+    public String deleteReport(@RequestParam("reportId") long reportId) {
         reportRepository.deleteById(reportId);
 
         return "redirect:/report";

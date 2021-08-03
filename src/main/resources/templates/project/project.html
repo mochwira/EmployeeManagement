@@ -39,14 +39,14 @@
         <div class="container">
             <div class="container">
                 <button class="btn btn-primary nBtn">New</button>
-                <table class="table table-hover" id="kategoritable">
+                <table class="table table-hover" id="projecttable">
                     <thead class="bg-dark text-white">
                     <tr>
                         <!--            <td>ID Kategori</td>-->
-                        <td>Nama Report</td>
-                        <td>Kategori</td>
-                        <td>Detail Report</td>
-                        <td>Waktu Report</td>
+                        <td>Nama project</td>
+                        <td>Keterangan Project</td>
+                        <td>Asal Project</td>
+                        <td>Durasi </td>
                         <td>Action</td>
                     </tr>
                     </thead>
@@ -73,7 +73,7 @@
 
             <!-- Modal Edit n New-->
             <div class="myForm">
-                <form th:action="@{/save}" method="post" th:object="${buatKategori}">
+                <form th:action="@{/save}" method="post" th:object="${buatProject}">
                     <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
                          id="exampleModal">
                         <div class="modal-dialog" role="document">
@@ -85,14 +85,36 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="text" class="form-control" id="kategoriId" name="kategoriId" value="" th:field="*{kategoriId}">
+                                    <input type="text" class="form-control" id="projectId" name="projectId" value="" th:field="*{projectId}">
                                     <div class="form-group">
-                                        <label for="namaKategori" class=" label">Nama</label>
+                                        <label for="namaProject" class=" label">Nama</label>
                                         <td>
-                                            <input type="text" class="form-control" id="namaKategori" name="namaKategori" value="" th:field="*{namaKategori}">
+                                            <input type="text" class="form-control" id="namaProject" name="namaProject" value="" th:field="*{namaProject}">
                                         </td>
                                         <td th:if="${#fields.hasErrors('namaKategori')}" th:errors="*{namaKategori}">Name Error</td>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="reportName" class=" label">Nama Project</label>
+                                        <td>
+                                            <input type="text" class="form-control" id="reportName" name="reportName" value="" th:field="*{reportName}">
+                                        </td>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="asalProject" class=" label">Asal Project</label>
+                                        <td>
+                                            <input type="text" class="form-control" id="asalProject" name="asalProject" value="" th:field="*{asalProject}">
+                                        </td>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="durasiProject" class=" label">Durasi Project</label>
+                                        <td>
+                                            <input type="text" class="form-control" id="durasiProject" name="durasiProject" value="" th:field="*{durasiProject}">
+                                        </td>
+                                    </div>
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -14,7 +14,7 @@ public class ReportRestController {
     private ReportRepository reportRepository;
 
     @GetMapping("/findone")
-    public Reports createFindOne(@RequestParam("reportId") Integer reportId) {
+    public Reports createFindOne(@RequestParam("reportId") Long reportId) {
         Reports r = new Reports();
         Reports rp = reportRepository.getOne(reportId);
 

@@ -63,7 +63,8 @@ public class User implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Role roleId;
 
-    private Collection < Role > roles;
+    private Collection<Role> roles;
+
     public User() {
     }
 
@@ -78,7 +79,9 @@ public class User implements Serializable {
         this.email = email;
         this.password = password;
     }
-    public User(String firstName, String lastName, String email, String password, Collection < Role > roles) {
+
+    public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+        super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -141,12 +144,11 @@ public class User implements Serializable {
     public void setRoleId(Role roleId) {
         this.roleId = roleId;
     }
-    
-     public Collection < Role > getRoles() {
+
+    public Collection<Role> getRoles() {
         return roles;
     }
-
-    public void setRoles(Collection < Role > roles) {
+    public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
 

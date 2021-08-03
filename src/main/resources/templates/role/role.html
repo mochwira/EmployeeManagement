@@ -49,15 +49,13 @@
                     <tr>
                         <!--              <td>ID Role</td>-->
                         <td>Nama Role</td>
-                        <td>Status Role</td>
                         <td>Action</td>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="r : ${roles}">
                         <!--              <td th:text="${r.roleId}"></td>-->
-                        <td th:text="${r.namaRole}"></td>
-                        <td th:text="${r.statusRole}"></td>
+                        <td th:text="${r.name}"></td>
                         <td>
                             <a class="btn btn-primary text-white eBtn"
                                th:href="@{http://localhost:8082/findrole/(roleId=${r.roleId})}">Edit</a>
@@ -91,8 +89,8 @@
                                 <div class="modal-body">
                                     <input type="text" class="form-control" id="roleId" name="roleId" value="" th:field="*{roleId}">
                                     <div class="form-group">
-                                        <label for="namaRole" class=" label">Nama</label>
-                                        <input type="text" class="form-control" id="namaRole" name="namaRole" value="" th:field="*{namaRole}">
+                                        <label for="name" class=" label">Nama</label>
+                                        <input type="text" class="form-control" id="name" name="name" value="" th:field="*{name}">
                                     </div>
 
                                 </div>

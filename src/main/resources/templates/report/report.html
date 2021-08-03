@@ -27,7 +27,7 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
 
     <link rel="stylesheet" th:href="@{/css/stylesidebar.css}"/>
-    <script th:src="@{/js/kategori.js}"></script>
+    <script th:src="@{/js/report.js}"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -39,7 +39,7 @@
         <div class="container">
             <div class="container">
                 <button class="btn btn-primary nBtn">New</button>
-                <table class="table table-hover" id="kategoritable">
+                <table class="table table-hover" id="reporttable">
                     <thead class="bg-dark text-white">
                     <tr>
                         <!--            <td>ID Kategori</td>-->
@@ -93,6 +93,31 @@
                                         </td>
                                         <td th:if="${#fields.hasErrors('namaKategori')}" th:errors="*{namaKategori}">Name Error</td>
                                     </div>
+
+                                    <label>Kategori<span class="redColor">*</span></label>
+                                    <select th:field="*{kategoriId}" class="form-control" required>
+                                        <option value="">Pilih</option>
+                                        <option
+                                                th:each="kategori : ${kategoris}"
+                                                th:value="${role.roleId}"
+                                                th:text="${role.namaRole}">
+                                        </option>
+                                    </select>
+
+                                    <div class="form-group">
+                                        <label for="detailReport" class=" label">Detail</label>
+                                        <td>
+                                            <input type="text" class="form-control" id="detailReport" name="detailReport" value="" th:field="*{detailReport}">
+                                        </td>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="waktuReport" class=" label">Waktu</label>
+                                        <td>
+                                            <input type="text" class="form-control" id="waktuReport" name="waktuReport" value="" th:field="*{waktuReport}">
+                                        </td>
+                                    </div>
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -135,7 +160,7 @@
 
 <script>
     $(document).ready( function () {
-    $('#kategoritable').DataTable();
+    $('#reporttable').DataTable();
 } );
 </script>
 
