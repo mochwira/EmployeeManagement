@@ -1,16 +1,18 @@
 package com.wira.EmployeeManagement.controller;
 
-import com.wira.EmployeeManagement.model.Kategori;
 import com.wira.EmployeeManagement.model.Reports;
-import com.wira.EmployeeManagement.repository.KategoriRepository;
 import com.wira.EmployeeManagement.repository.ReportRepository;
+import jdk.nashorn.internal.runtime.ErrorManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 @Controller
 public class ReportController {
@@ -28,8 +30,10 @@ public class ReportController {
     }
 
     @PostMapping("/save")
-    public String save( Reports reports) {
-
+    public String save(@Valid Reports reports, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return "redirect:/report";
+        }
 
         reportRepository.save(reports);
 

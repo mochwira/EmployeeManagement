@@ -19,6 +19,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -44,12 +45,15 @@ public class Employees implements Serializable {
     @Column(name = "employee_id")
     private Integer employeeId;
     @Basic(optional = false)
+    @Size(min=2, max=30)
     @Column(name = "first_name")
     private String firstName;
     @Basic(optional = false)
+    @Size(min=2, max=30)
     @Column(name = "last_name")
     private String lastName;
     @Basic(optional = false)
+    @Size(min=2, max=50)
     @Column(name = "email")
     private String email;
     @Basic(optional = false)

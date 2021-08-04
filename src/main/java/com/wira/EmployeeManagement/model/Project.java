@@ -21,6 +21,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -46,12 +49,17 @@ public class Project implements Serializable {
     @Column(name = "project_id")
     private Long projectId;
     @Basic(optional = false)
+    @Size(min=2, max=80)
     @Column(name = "nama_project")
     private String namaProject;
     @Basic(optional = false)
+    @NotNull
+    @Min(18)
+    @Size(min=2, max=500)
     @Column(name = "keterangan_project")
     private String keteranganProject;
     @Basic(optional = false)
+    @Size(min=2, max=50)
     @Column(name = "asal_project")
     private String asalProject;
     @Basic(optional = false)

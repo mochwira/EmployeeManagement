@@ -109,6 +109,7 @@
                                         <td>
                                             <input type="text" class="form-control" id="detailReport" name="detailReport" value="" th:field="*{detailReport}">
                                         </td>
+                                        <td th:if="${#fields.hasErrors('detailReport')}" th:errors="*{detailReport}">Detail Error</td>
                                     </div>
 
                                     <div class="form-group">

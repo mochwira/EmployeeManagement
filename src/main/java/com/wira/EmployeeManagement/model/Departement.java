@@ -18,6 +18,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -40,6 +42,9 @@ public class Departement implements Serializable {
     @Column(name = "departement_id")
     private Integer departementId;
     @Basic(optional = false)
+
+    @NotNull
+    @Size(min=2, max=30)
     @Column(name = "departement_name")
     private String departementName;
     @JoinColumn(name = "departement_id", referencedColumnName = "departement_id", insertable = false, updatable = false)

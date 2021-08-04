@@ -22,6 +22,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -48,12 +49,14 @@ public class Reports implements Serializable {
     @Column(name = "report_id")
     private Long reportId;
     @Basic(optional = false)
+    @Size(min=2, max=50)
     @Column(name = "report_name")
     private String reportName;
     @Basic(optional = false)
     @Column(name = "kategori_id")
     private int kategoriId;
     @Basic(optional = false)
+    @Size(min=2, max=500)
     @Column(name = "report_detail")
     private String reportDetail;
     @Column(name = "report_time")

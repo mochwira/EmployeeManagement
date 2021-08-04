@@ -2,13 +2,17 @@ package com.wira.EmployeeManagement.controller;
 
 import com.wira.EmployeeManagement.model.Kategori;
 import com.wira.EmployeeManagement.repository.KategoriRepository;
+import jdk.nashorn.internal.runtime.ErrorManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 @Controller
 public class KategoriController {
@@ -27,10 +31,10 @@ public class KategoriController {
 
     @PostMapping("/save")
     //@Valid BindingResult bindingResult
-    public String save( Kategori kategori) {
-//        if(bindingResult.hasErrors()){
-//            return "redirect:/kategori";
-//        }
+    public String save(@Valid Kategori kategori, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return "redirect:/kategori";
+        }
 
         kategoriRepository.save(kategori);
 

@@ -16,6 +16,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -37,6 +38,7 @@ public class Kategori implements Serializable {
     @Column(name = "kategori_id")
     private Integer kategoriId;
     @Basic(optional = false)
+    @Size(min=2, max=30)
     @Column(name = "nama_kategori")
     private String namaKategori;
     @JoinColumn(name = "kategori_id", referencedColumnName = "kategori_id", insertable = false, updatable = false)
