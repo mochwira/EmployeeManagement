@@ -29,7 +29,7 @@ public class ReportFileController {
         return "/report/reportfile.html";
     }
 
-    @GetMapping("/userfile")
+    @GetMapping("/reportfile")
     public void downloadExcelFile(HttpServletResponse response) throws IOException {
         List<Reports> reports = (List<Reports>)reportRepository.findAll();
         ByteArrayInputStream byteArrayInputStream = reportService.export(reports);

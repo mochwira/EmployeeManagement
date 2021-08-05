@@ -12,7 +12,7 @@ public class KategoriRestController {
     @Autowired
     private KategoriRepository kategoriRepository;
 
-    @GetMapping("/findone")
+    @GetMapping("/findkategori")
     public Kategori createFindOne(@RequestParam("kategoriId") Integer kategoriId) {
         Kategori k = new Kategori();
         Kategori tmp = kategoriRepository.getOne(kategoriId);

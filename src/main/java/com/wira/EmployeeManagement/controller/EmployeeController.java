@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -18,7 +20,7 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     // display list of employees
-    @GetMapping("/")
+    @GetMapping("/employee")
     public String viewHomePage(Model model) {
         return findPaginated(1, "firstName", "asc", model);
     }
@@ -32,10 +34,14 @@ public class EmployeeController {
     }
 
     @PostMapping("/saveEmployee")
-    public String saveEmployee(@ModelAttribute("employee") Employees employees) {
+    public String saveEmployee(@Valid @ModelAttribute("employee") Employees employees, BindingResult bindingResult) {
         // save employee to database
+        if(bindingResult.hasErrors()){
+            return "redirect:/employee";
+        }
+
         employeeService.saveEmployee(employees);
-        return "redirect:/";
+        return "redirect:/employee";
     }
 
     @GetMapping("/showFormForUpdate/{id}")

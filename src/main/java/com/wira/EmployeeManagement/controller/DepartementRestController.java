@@ -15,7 +15,7 @@ public class DepartementRestController {
     @Autowired
     private DepartementRepository departementRepository;
 
-    @GetMapping("/findone")
+    @GetMapping("/finddepartement")
     public Departement createFindOne(@RequestParam("departementId") Integer departementId) {
         Departement d = new Departement();
         Departement dp = departementRepository.getOne(departementId);

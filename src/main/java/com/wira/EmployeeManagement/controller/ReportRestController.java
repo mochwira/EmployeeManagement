@@ -13,7 +13,7 @@ public class ReportRestController {
     @Autowired
     private ReportRepository reportRepository;
 
-    @GetMapping("/findone")
+    @GetMapping("/findreport")
     public Reports createFindOne(@RequestParam("reportId") Long reportId) {
         Reports r = new Reports();
         Reports rp = reportRepository.getOne(reportId);

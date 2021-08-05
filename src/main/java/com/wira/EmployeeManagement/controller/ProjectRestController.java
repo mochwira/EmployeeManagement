@@ -15,7 +15,7 @@ public class ProjectRestController {
     @Autowired
     private ProjectRepository projectRepository;
 
-    @GetMapping("/findone")
+    @GetMapping("/findproject")
     public Project createFindOne(@RequestParam("projectId") Long projectId) {
         Project p = new Project();
         Project pj = projectRepository.getOne(projectId);

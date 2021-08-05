@@ -30,7 +30,7 @@ public class ProjectFileController {
         return "/project/reportfile.html";
     }
 
-    @GetMapping("/userfile")
+    @GetMapping("/projectfile")
     public void downloadExcelFile(HttpServletResponse response) throws IOException {
         List<Project> projects = (List<Project>)projectRepository.findAll();
         ByteArrayInputStream byteArrayInputStream = projectFileService.export(projects);

@@ -53,7 +53,7 @@
             <td th:text="${d.namaDepartements}"></td>
             <td>
                 <a class="btn btn-primary text-white eBtn"
-                   th:href="@{http://localhost:8082/findone/(departementId=${d.departementId})}">Edit</a>
+                   th:href="@{http://localhost:8082/finddepartement/(departementId=${d.departementId})}">Edit</a>
 <!--                delete id kayanya jadi delete KategoriId-->
                 <a class="btn btn-danger text-white rBtn" th:href="${'/delete?departementId='+d.departementId}">Remove</a>
             </td>

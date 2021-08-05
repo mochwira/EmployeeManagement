@@ -2,7 +2,6 @@ package com.wira.EmployeeManagement.controller;
 
 import com.wira.EmployeeManagement.model.Kategori;
 import com.wira.EmployeeManagement.repository.KategoriRepository;
-import jdk.nashorn.internal.runtime.ErrorManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;

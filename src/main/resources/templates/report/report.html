@@ -38,7 +38,14 @@
 
         <div class="container">
             <div class="container">
+                <div>
                 <button class="btn btn-primary nBtn">New</button>
+
+                    <div class="container">
+                        <p>Click button below to download Excel file.</p>
+                        <a href="http://localhost:8082/reportfile" class="btn btn-primary" onclick="Swal.fire('Download Complete', 'Check Your Data ', 'success')">Download Excel File</a>
+                    </div>
+                </div>
                 <table class="table table-hover" id="reporttable">
                     <thead class="bg-dark text-white">
                     <tr>
@@ -56,7 +63,7 @@
                         <td th:text="${k.namaKategori}"></td>
                         <td>
                             <a class="btn btn-primary text-white eBtn"
-                               th:href="@{http://localhost:8082/findone/(kategoriId=${k.kategoriId})}">Edit</a>
+                               th:href="@{http://localhost:8082/findreport/(kategoriId=${k.kategoriId})}">Edit</a>
                             <!--                delete id kayanya jadi delete KategoriId-->
                             <a class="btn btn-danger text-white rBtn" th:href="${'/delete?kategoriId='+k.kategoriId}">Remove</a>
                         </td>
