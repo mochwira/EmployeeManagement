@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>Report Management</title>
+    <title>Notification</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Image -->
@@ -22,7 +22,11 @@
             crossorigin="anonymous"></script>
 
     <link rel="stylesheet" th:href="@{/css/stylesidebar.css}"/>
-    <script th:src="@{/js/setting.js}"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <script th:src="@{/js/notif.js}"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -32,6 +36,69 @@
         <div th:insert="fragment/navheader.html :: navheader"></div>
 
         <div class="container">
+
+            <div class="row notification-container">
+                <h2 class="text-center">My Notifications</h2>
+                <p class="dismiss text-right"><a id="dismiss-all" href="#">Dimiss All</a></p>
+                <div class="card notification-card notification-invitation">
+                    <div class="card-body">
+                        <table>
+                            <tr>
+                                <td style="width:70%"><div class="card-title">Jane invited you to join '<b>Familia</b>' group</div></td>
+                                <td style="width:30%">
+                                    <a href="#" class="btn btn-primary">View</a>
+                                    <a href="#" class="btn btn-danger dismiss-notification">Dismiss</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card notification-card notification-warning">
+                    <div class="card-body">
+                        <table>
+                            <tr>
+                                <td style="width:70%"><div class="card-title">Your expenses for '<b>Groceries</b>' has exceeded its budget</div></td>
+                                <td style="width:30%">
+                                    <a href="#" class="btn btn-primary">View</a>
+                                    <a href="#" class="btn btn-danger dismiss-notification">Dismiss</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card notification-card notification-danger">
+                    <div class="card-body">
+                        <table>
+                            <tr>
+                                <td style="width:70%"><div class="card-title">Insufficient budget to create '<b>Clothing</b>' budget category</div></td>
+                                <td style="width:30%">
+                                    <a href="#" class="btn btn-primary">View</a>
+                                    <a href="#" class="btn btn-danger dismiss-notification">Dismiss</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card notification-card notification-reminder">
+                    <div class="card-body">
+                        <table>
+                            <tr>
+                                <td style="width:70%"><div class="card-title">You have <b>2</b> upcoming payment(s) this week</div></td>
+                                <td style="width:30%">
+                                    <a href="#" class="btn btn-primary">View</a>
+                                    <a href="#" class="btn btn-danger dismiss-notification">Dismiss</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+
         </div>
 
     </div>

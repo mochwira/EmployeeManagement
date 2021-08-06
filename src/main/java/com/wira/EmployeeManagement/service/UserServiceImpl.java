@@ -39,6 +39,26 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public void save(User user) {
+
+    }
+
+    @Override
+    public Iterable<User> getAll() {
+        return null;
+    }
+
+    @Override
+    public User getEmail(String email) {
+        return null;
+    }
+
+    @Override
+    public User getPassword(String password) {
+        return null;
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         User user = userRepository.findByEmail(username);

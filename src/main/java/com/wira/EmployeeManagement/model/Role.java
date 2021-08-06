@@ -52,7 +52,7 @@ public class Role implements Serializable {
     public Role() {
     }
 
-    public Role(String roleId) {
+    public Role(Long roleId) {
         this.roleId = roleId;
     }
 
