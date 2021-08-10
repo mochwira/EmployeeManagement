@@ -32,18 +32,8 @@ public class NewSecurityConfig  extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
 
-                .antMatchers("/artikel/").hasRole("admin")
-                //.antMatchers("/artikel/").hasAnyRole("admin", "employee", "publisher")
-                .antMatchers("/user/").hasRole("admin")
-                .antMatchers("/role/").hasRole("admin")
-                .antMatchers("/kategori/").hasRole("admin")
-                .antMatchers("/home/").hasRole("employee")
-                .antMatchers("/artikel/").hasRole("employee")
-                .antMatchers("/file/").hasRole("employee")
-                .antMatchers("/approval/").hasRole("publisher")
-                .antMatchers("/file/").hasRole("publisher")
-                //.antMatchers("/").permitAll()
-                //.antMatchers("/artikel").permitAll()
+                .antMatchers("/").permitAll()
+                //.antMatchers("/User").permitAll()
                 .antMatchers("/password/forgot").permitAll()
                 .antMatchers(HttpMethod.POST, "/password/forgot/request").permitAll()
                 .anyRequest()
@@ -63,7 +53,7 @@ public class NewSecurityConfig  extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 //.addLogoutHandler(new SecurityLogout())
-                .logoutSuccessUrl("/artikel");
+                .logoutSuccessUrl("/");
         ;
     }
 

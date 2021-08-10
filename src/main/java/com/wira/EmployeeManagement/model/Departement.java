@@ -42,9 +42,8 @@ public class Departement implements Serializable {
     @Column(name = "departement_id")
     private Integer departementId;
     @Basic(optional = false)
-
     @NotNull
-    @Size(min=2, max=30)
+    @Size(min = 1, max = 30)
     @Column(name = "departement_name")
     private String departementName;
     @JoinColumn(name = "departement_id", referencedColumnName = "departement_id", insertable = false, updatable = false)

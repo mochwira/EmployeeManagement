@@ -36,7 +36,7 @@ public class SpringMailService {
 
             helper.setTo(to);
             helper.setSubject(sbj);
-            helper.setFrom("noreply@attendance.mii");
+            helper.setFrom("noreply@acesanjay.yeah");
             helper.setText(html, true);
 
             sender.send(message);

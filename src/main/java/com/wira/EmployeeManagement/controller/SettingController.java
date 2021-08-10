@@ -1,12 +1,13 @@
 package com.wira.EmployeeManagement.controller;
 
-import jdk.nashorn.internal.ir.annotations.Reference;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@Reference
+@RequestMapping
 public class SettingController {
 
     @GetMapping("/setting")

@@ -6,7 +6,6 @@
 package com.wira.EmployeeManagement.model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,6 +20,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -47,18 +47,24 @@ public class User implements Serializable {
     @Column(name = "user_id")
     private Integer userId;
     @Basic(optional = false)
-    @Size(min=2, max=30)
+    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "first_name")
     private String firstName;
     @Basic(optional = false)
-    @Size(min=2, max=30)
+    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "last_name")
     private String lastName;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
-    @Size(min=2, max=80)
+    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "email")
     private String email;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "password")
     private String password;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "userId", fetch = FetchType.LAZY)
@@ -66,8 +72,6 @@ public class User implements Serializable {
     @JoinColumn(name = "role_id", referencedColumnName = "role_id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Role roleId;
-
-    private Collection<Role> roles;
 
     public User() {
     }
@@ -82,15 +86,6 @@ public class User implements Serializable {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-    }
-
-    public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
-        super();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.roles = roles;
     }
 
     public Integer getUserId() {
@@ -147,13 +142,6 @@ public class User implements Serializable {
 
     public void setRoleId(Role roleId) {
         this.roleId = roleId;
-    }
-
-    public Collection<Role> getRoles() {
-        return roles;
-    }
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
     }
 
     @Override

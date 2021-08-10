@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
 <head>
   <title>My Profile</title>
   <meta charset="utf-8">
@@ -26,7 +26,7 @@
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <!------ Include the above in your HEAD tag ---------->
-  <script th:src="@{/js/setting.js}"></script>
+  <script th:src="@{/js/user.js}"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -69,9 +69,38 @@
       </form>
     </div>
 
-  </div>
-</div>
+    <table class="table table-hover" id="roletable">
+      <thead class="bg-dark text-white">
+      <tr>
+        <!--              <td>ID Role</td>-->
+        <td>User</td>
+        <td>Action</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="up : ${profiles}">
+        <!--              <td th:text="${r.roleId}"></td>-->
+        <td th:text="${up.firstName}"></td>
+        <td th:text="${up.lastName}"></td>
+        <td th:text="${up.Email}"></td>
+        <td th:text="${up.password}"></td>
+        <td>
+          <a class="btn btn-primary text-white eBtn"
+             th:href="@{http://localhost:8082/findrole/(roleId=${r.roleId})}">Edit</a>
+          <!--                delete id kayanya jadi delete KategoriId-->
+          <a class="btn btn-danger text-white rBtn" th:href="${'/deleterole?roleId='+r.roleId}">Remove</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
 
+</div>
+</div>
+<script>
+    $(document).ready( function () {
+    $('#profiletable').DataTable();
+} );
+</script>
 
 </body>
 </html>

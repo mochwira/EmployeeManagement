@@ -19,6 +19,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -45,18 +46,23 @@ public class Employees implements Serializable {
     @Column(name = "employee_id")
     private Integer employeeId;
     @Basic(optional = false)
-    @Size(min=2, max=30)
+    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "first_name")
     private String firstName;
     @Basic(optional = false)
-    @Size(min=2, max=30)
+    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "last_name")
     private String lastName;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
-    @Size(min=2, max=50)
+    @NotNull
+    @Size(min = 1, max = 100)
     @Column(name = "email")
     private String email;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "departement_id")
     private int departementId;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "employeeId", fetch = FetchType.LAZY)

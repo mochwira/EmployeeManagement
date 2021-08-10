@@ -15,16 +15,18 @@ import java.util.Optional;
 public class UserDetailServiceCustome implements UserDetailsService {
 
     @Autowired
-    private UserService userService;
+    private UserServices userServices;
 
     @Autowired
     private RoleService roleService;
 
+//    @Autowired
+//    private RoleRepository roleRepository;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        User user = userService.getEmail(email);
+        User user = userServices.getEmail(email);
 
 
 //        TblRole rolee = roleService.getRoleById(roleid);
@@ -43,6 +45,7 @@ public class UserDetailServiceCustome implements UserDetailsService {
         System.out.println("role " +role);
 
         //cek pemanggilan ini mungkin pakai emailS
-        return (UserDetails) new NewUserDetail(emails, password, role);
+        return new NewUserDetail(emails, password, role);
     }
+
 }
