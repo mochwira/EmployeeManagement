@@ -27,6 +27,7 @@
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <!------ Include the above in your HEAD tag ---------->
   <script th:src="@{/js/user.js}"></script>
+  <script th:src="@{/js/profile.js}"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -37,62 +38,365 @@
 
     <div class="container">
 
+      <hr>
+      <div class="container bootstrap snippet">
+        <div class="row">
+          <div class="col-sm-10"><h1>User name</h1></div>
+          <div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3"><!--left col-->
+
+
+            <div class="text-center">
+              <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+              <h6>Upload a different photo...</h6>
+              <input type="file" class="text-center center-block file-upload">
+            </div></hr><br>
+
+
+            <div class="panel panel-default">
+              <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
+              <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
+            </div>
+
+
+            <ul class="list-group">
+              <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
+            </ul>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">Social Media</div>
+              <div class="panel-body">
+                <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+              </div>
+            </div>
+
+          </div><!--/col-3-->
+          <div class="col-sm-9">
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+              <li><a data-toggle="tab" href="#messages">Menu 1</a></li>
+              <li><a data-toggle="tab" href="#settings">Menu 2</a></li>
+            </ul>
+
+
+            <div class="tab-content">
+              <div class="tab-pane active" id="home">
+                <hr>
+                <form class="form" action="##" method="post" id="registrationForm">
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="first_name"><h4>First name</h4></label>
+                      <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                    </div>
+                  </div>
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="last_name"><h4>Last name</h4></label>
+                      <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="phone"><h4>Phone</h4></label>
+                      <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="mobile"><h4>Mobile</h4></label>
+                      <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
+                    </div>
+                  </div>
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="email"><h4>Email</h4></label>
+                      <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                    </div>
+                  </div>
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="email"><h4>Location</h4></label>
+                      <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
+                    </div>
+                  </div>
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="password"><h4>Password</h4></label>
+                      <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
+                    </div>
+                  </div>
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="password2"><h4>Verify</h4></label>
+                      <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                      <br>
+                      <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                      <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                    </div>
+                  </div>
+                </form>
+
+                <hr>
+
+              </div><!--/tab-pane-->
+              <div class="tab-pane" id="messages">
+
+                <h2></h2>
+
+                <hr>
+                <form class="form" action="##" method="post" id="registrationForm">
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="first_name"><h4>First name</h4></label>
+                      <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                    </div>
+                  </div>
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="last_name"><h4>Last name</h4></label>
+                      <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="phone"><h4>Phone</h4></label>
+                      <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="mobile"><h4>Mobile</h4></label>
+                      <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
+                    </div>
+                  </div>
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="email"><h4>Email</h4></label>
+                      <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                    </div>
+                  </div>
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="email"><h4>Location</h4></label>
+                      <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
+                    </div>
+                  </div>
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="password"><h4>Password</h4></label>
+                      <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
+                    </div>
+                  </div>
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="password2"><h4>Verify</h4></label>
+                      <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                      <br>
+                      <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                      <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                    </div>
+                  </div>
+                </form>
+
+              </div><!--/tab-pane-->
+              <div class="tab-pane" id="settings">
+
+
+                <hr>
+                <form class="form" action="##" method="post" id="registrationForm">
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="first_name"><h4>First name</h4></label>
+                      <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                    </div>
+                  </div>
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="last_name"><h4>Last name</h4></label>
+                      <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="phone"><h4>Phone</h4></label>
+                      <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="mobile"><h4>Mobile</h4></label>
+                      <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
+                    </div>
+                  </div>
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="email"><h4>Email</h4></label>
+                      <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                    </div>
+                  </div>
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="email"><h4>Location</h4></label>
+                      <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
+                    </div>
+                  </div>
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="password"><h4>Password</h4></label>
+                      <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
+                    </div>
+                  </div>
+                  <div class="form-group">
+
+                    <div class="col-xs-6">
+                      <label for="password2"><h4>Verify</h4></label>
+                      <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-xs-12">
+                      <br>
+                      <button class="btn btn-lg btn-success pull-right" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                      <!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+            </div><!--/tab-pane-->
+          </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+      </div><!--/row-->
+
       <form>
-        <div class="form-group">
-          <label for="exampleFormControlInput1">Email address</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <div class="form-row">
+
+          <label class="form-label" for="customFile">Change Image</label>
+          <input type="file" class="form-control" id="customFile" />
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Name</label>
+            <input type="name" class="form-control" id="inputName">
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Email</label>
+            <input type="email" class="form-control" id="inputEmail4">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Password</label>
+            <input type="password" class="form-control" id="inputPassword4">
+          </div>
         </div>
         <div class="form-group">
-          <label for="exampleFormControlSelect1">Example select</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
+          <label for="inputAddress">Address</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
         </div>
         <div class="form-group">
-          <label for="exampleFormControlSelect2">Example multiple select</label>
-          <select multiple class="form-control" id="exampleFormControlSelect2">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
+          <label for="inputAddress2">Address 2</label>
+          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputCity">City</label>
+            <input type="text" class="form-control" id="inputCity">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">State</label>
+            <select id="inputState" class="form-control">
+              <option selected>Choose...</option>
+              <option>...</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputZip">Zip</label>
+            <input type="text" class="form-control" id="inputZip">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputZip">Phone</label>
+            <input type="text" class="form-control" id="inputPhone">
+          </div>
+
         </div>
         <div class="form-group">
-          <label for="exampleFormControlTextarea1">Example textarea</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Check me out
+            </label>
+          </div>
         </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
+
+      <table class="table table-hover" id="roletable">
+        <thead class="bg-dark text-white">
+        <tr>
+          <!--              <td>ID Role</td>-->
+          <td>User</td>
+          <td>Action</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="up : ${profiles}">
+          <!--              <td th:text="${r.roleId}"></td>-->
+          <td th:text="${up.firstName}"></td>
+          <td th:text="${up.lastName}"></td>
+          <td th:text="${up.Email}"></td>
+          <td th:text="${up.password}"></td>
+          <td>
+            <a class="btn btn-primary text-white eBtn"
+               th:href="@{http://localhost:8082/findrole/(roleId=${r.roleId})}">Edit</a>
+            <!--                delete id kayanya jadi delete KategoriId-->
+            <a class="btn btn-danger text-white rBtn" th:href="${'/deleterole?roleId='+r.roleId}">Remove</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
     </div>
 
-    <table class="table table-hover" id="roletable">
-      <thead class="bg-dark text-white">
-      <tr>
-        <!--              <td>ID Role</td>-->
-        <td>User</td>
-        <td>Action</td>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="up : ${profiles}">
-        <!--              <td th:text="${r.roleId}"></td>-->
-        <td th:text="${up.firstName}"></td>
-        <td th:text="${up.lastName}"></td>
-        <td th:text="${up.Email}"></td>
-        <td th:text="${up.password}"></td>
-        <td>
-          <a class="btn btn-primary text-white eBtn"
-             th:href="@{http://localhost:8082/findrole/(roleId=${r.roleId})}">Edit</a>
-          <!--                delete id kayanya jadi delete KategoriId-->
-          <a class="btn btn-danger text-white rBtn" th:href="${'/deleterole?roleId='+r.roleId}">Remove</a>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+
 
 </div>
 </div>

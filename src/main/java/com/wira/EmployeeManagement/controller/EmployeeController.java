@@ -30,18 +30,18 @@ public class EmployeeController {
         // create model attribute to bind form data
         Employees employees = new Employees();
         model.addAttribute("employees", employees);
-        return "new_employee";
+        return "home/home.html";
     }
 
     @PostMapping("/saveEmployee")
     public String saveEmployee(@Valid @ModelAttribute("employee") Employees employees, BindingResult bindingResult) {
         // save employee to database
         if(bindingResult.hasErrors()){
-            return "redirect:/employee";
+            return "redirect:/home";
         }
 
         employeeService.saveEmployee(employees);
-        return "redirect:/employee";
+        return "redirect:/home";
     }
 
     @GetMapping("/showFormForUpdate/{id}")
@@ -60,7 +60,7 @@ public class EmployeeController {
 
         // call delete employee method
         this.employeeService.deleteEmployeeById(id);
-        return "redirect:/";
+        return "redirect:/home";
     }
 
 
