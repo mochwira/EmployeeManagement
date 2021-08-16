@@ -27,7 +27,7 @@ public class DepartementController {
         return "/departement/departement.html";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/savedepartement")
     //@Valid BindingResult bindingResult
     public String save(@Valid Departement departement, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -39,7 +39,7 @@ public class DepartementController {
         return "redirect:/departement";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/deletedepartement")
     public String deleteDepartement(@RequestParam("departementId") int departementId) {
         departementRepository.deleteById(departementId);
 

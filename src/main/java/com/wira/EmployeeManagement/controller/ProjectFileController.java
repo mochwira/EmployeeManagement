@@ -27,7 +27,7 @@ public class ProjectFileController {
 
     @GetMapping("/project")
     public String index() {
-        return "/project/reportfile.html";
+        return "/project/projectfile.html";
     }
 
     @GetMapping("/projectfile")

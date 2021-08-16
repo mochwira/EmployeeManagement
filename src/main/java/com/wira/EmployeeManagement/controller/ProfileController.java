@@ -30,7 +30,7 @@ public class ProfileController {
         return "/profile/profile.html";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/saveprofile")
     //@Valid BindingResult bindingResult
     public String save(@Valid User user, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
@@ -42,7 +42,7 @@ public class ProfileController {
         return "redirect:/profile";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/deleteprofile")
     public String deleteProfile(@RequestParam("userId") Long userId) {
         profileRepository.deleteById(userId);
 

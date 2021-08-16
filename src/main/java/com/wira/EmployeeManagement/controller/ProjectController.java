@@ -19,7 +19,7 @@ public class ProjectController {
     @Autowired
     private ProjectRepository projectRepository;
 
-    @GetMapping("/report")
+    @GetMapping("/project")
     public String createIndex(Model model, @RequestParam(defaultValue = "0", name = "page") int page) {
         //model.addAttribute("kategoris", kategoriRepositoryJpa.findAll(new PageRequest(page, 4)));
         model.addAttribute("projects", projectRepository.findAll(PageRequest.of(page, 8)));
@@ -28,7 +28,7 @@ public class ProjectController {
         return "/project/project.html";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/saveproject")
     public String save(@Valid Project project, BindingResult bindingResult) {
 
         if(bindingResult.hasErrors()){
@@ -40,7 +40,7 @@ public class ProjectController {
         return "redirect:/project";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/deleteproject")
     public String deleteProject(@RequestParam("projectId") long projectId) {
         projectRepository.deleteById(projectId);
 

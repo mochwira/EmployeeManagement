@@ -28,7 +28,7 @@ public class ReportController {
         return "/report/report.html";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/savereport")
     public String save(@Valid Reports reports, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
             return "redirect:/report";
@@ -39,7 +39,7 @@ public class ReportController {
         return "redirect:/report";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/deletereport")
     public String deleteReport(@RequestParam("reportId") long reportId) {
         reportRepository.deleteById(reportId);
 

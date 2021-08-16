@@ -30,7 +30,7 @@ public class RoleController {
         return "/role/role.html";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/saverole")
     //@Valid BindingResult bindingResult
     public String save(@Valid Role role, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
@@ -42,7 +42,7 @@ public class RoleController {
         return "redirect:/role";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/deleterole")
     public String deleteRole(@RequestParam("roleId") int roleId) {
         //something problem in here
         roleRepository.deleteById((long) roleId);

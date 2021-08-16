@@ -1,8 +1,10 @@
 package com.wira.EmployeeManagement.controller;
 
+
 import com.wira.EmployeeManagement.model.User;
 import com.wira.EmployeeManagement.service.SpringMailService;
 import com.wira.EmployeeManagement.service.UserService;
+import com.wira.EmployeeManagement.service.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +21,7 @@ import java.util.UUID;
 public class PasswordController {
 
     @Autowired
-    private UserService userService;
+    private UserServices userServices;
     @Autowired
     private SpringMailService springMailService;
 
@@ -40,7 +42,7 @@ public class PasswordController {
     public String requestForgotPassword(
             @RequestParam(value = "email", required = true) String email){
         {
-            User getUser = userService.getEmail(email);
+            User getUser = userServices.getEmail(email);
             String sender = getUser.getFirstName();
 
             //BISA ENCRYPT PAKAI IF ELSE
@@ -56,7 +58,7 @@ public class PasswordController {
             model.put("title", subject);
             model.put("name", sender);
             model.put("message", content);
-            model.put("tiketID", link);
+            model.put("tiketId", link);
 
             springMailService.sendMail(model, subject, email);
             return "redirect:/password/reset";
