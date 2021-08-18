@@ -1,11 +1,8 @@
 package com.wira.EmployeeManagement.controller;
 
 import com.wira.EmployeeManagement.model.Project;
-import com.wira.EmployeeManagement.model.Reports;
 import com.wira.EmployeeManagement.repository.ProjectRepository;
-import com.wira.EmployeeManagement.repository.ReportRepository;
 import com.wira.EmployeeManagement.service.ProjectFileService;
-import com.wira.EmployeeManagement.service.ReportService;
 import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +22,7 @@ public class ProjectFileController {
     @Autowired
     private ProjectFileService projectFileService;
 
-    @GetMapping("/project")
+    @GetMapping("/projects")
     public String index() {
         return "/project/projectfile.html";
     }

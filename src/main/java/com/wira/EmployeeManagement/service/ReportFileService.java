@@ -5,6 +5,6 @@ import com.wira.EmployeeManagement.model.Reports;
 import java.io.ByteArrayInputStream;
 import java.util.List;
 
-public interface ReportService {
+public interface ReportFileService {
     ByteArrayInputStream export(List<Reports> reports);
 }

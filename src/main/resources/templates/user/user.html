@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>User Management</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Image -->
+  <link rel="icon" th:href="@{/img/menu.png}"/>
+
+  <script src="js/sweetalert2.all.min.js"></script>
+  <!--Online-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+          integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+          integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+          crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+  <link rel="stylesheet" th:href="@{/css/stylesidebar.css}"/>
+  <script th:src="@{/js/user.js}"></script>
+</head>
+<body>
+
+<div class="wrapper">
+  <!-- Sidebar  -->
+  <div th:insert="fragment/sidebar.html :: sidebar"></div>
+
+  <div id="content" class="col">
+    <div th:insert="fragment/navheader.html :: navheader"></div>
+
+
+    <div class="container">
+      <div class="container">
+        <button class="btn btn-primary nBtn">New</button>
+        <table class="table table-hover" id="usertable">
+          <thead class="bg-dark text-white">
+          <tr>
+            <!--              <td>ID Role</td>-->
+            <td>Nama User</td>
+            <td>Action</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="r : ${roles}">
+            <!--              <td th:text="${r.roleId}"></td>-->
+            <td th:text="${r.name}"></td>
+            <td>
+              <a class="btn btn-primary text-white eBtn"
+                 th:href="@{http://localhost:8082/findrole/(roleId=${r.roleId})}">Edit</a>
+              <!--                delete id kayanya jadi delete KategoriId-->
+              <a class="btn btn-danger text-white rBtn" th:href="${'/deleterole?roleId='+r.roleId}">Remove</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <ul class="nav nav-pills">
+          <li class="nav-item" th:each="i : ${#numbers.sequence(0, roles.totalPages-1)}">
+            <a th:href="${'?page='+i}" th:text="${i}" class="nav-link"
+               th:classappend="${buatPageRole}==${i}?'active':''"></a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Modal Edit n New-->
+      <div class="myForm">
+        <form th:action="@{/saverole}" method="post" th:object="${buatRole}">
+          <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="roleModalLabel" aria-hidden="true"
+               id="roleModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="roleModalLabel">Save or Update</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <input type="text" class="form-control" id="roleId" name="roleId" value="" th:field="*{roleId}">
+                  <div class="form-group">
+                    <label for="name" class=" label">Nama</label>
+                    <input type="text" class="form-control" id="name" name="name" value="" th:field="*{name}">
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary" onclick="
+                    Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Role has been saved',
+                    showConfirmButton: false,
+                    timer: 13500
+                    })">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Modal Edit n Remove di ganti My Remove-->
+      <div class="myRemoveRole">
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="roleModalLabel" aria-hidden="true"
+             id="roleModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="roleModalLabel">Save or Update</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="alert-danger text-dark p-2">Apakah anda yakin ?</div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a class="btn btn-danger dBtn" href="">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+</div>
+<script>
+  $(document).ready( function () {
+    $('#usertable').DataTable();
+} );
+</script>
+</body>
+</html>

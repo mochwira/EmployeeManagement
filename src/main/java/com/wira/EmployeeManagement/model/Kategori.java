@@ -7,11 +7,11 @@ package com.wira.EmployeeManagement.model;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -44,8 +44,7 @@ public class Kategori implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "nama_kategori")
     private String namaKategori;
-    @JoinColumn(name = "kategori_id", referencedColumnName = "kategori_id", insertable = false, updatable = false)
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "kategoriId", fetch = FetchType.LAZY)
     private Reports reports;
 
     public Kategori() {

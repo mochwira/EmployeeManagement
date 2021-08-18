@@ -1,8 +1,9 @@
 package com.wira.EmployeeManagement.controller;
 
 import com.wira.EmployeeManagement.model.Reports;
-
+import com.wira.EmployeeManagement.model.User;
 import com.wira.EmployeeManagement.repository.ReportRepository;
+import com.wira.EmployeeManagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -15,35 +16,35 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.Valid;
 
 @Controller
-public class ReportController {
+public class UserController {
 
     @Autowired
-    private ReportRepository reportRepository;
+    private UserRepository userRepository;
 
-    @GetMapping("/report")
+    @GetMapping("/user")
     public String createIndex(Model model, @RequestParam(defaultValue = "0", name = "page") int page) {
         //model.addAttribute("kategoris", kategoriRepositoryJpa.findAll(new PageRequest(page, 4)));
-        model.addAttribute("reports", reportRepository.findAll(PageRequest.of(page, 8)));
-        model.addAttribute("buatPageReport", page);
-        model.addAttribute ( "buatReport", new Reports());
-        return "/report/report.html";
+        model.addAttribute("reports", userRepository.findAll(PageRequest.of(page, 8)));
+        model.addAttribute("buatPageUser", page);
+        model.addAttribute ( "buatUser", new User());
+        return "/user/user.html";
     }
 
-    @PostMapping("/savereport")
-    public String save(@Valid Reports reports, BindingResult bindingResult) {
+    @PostMapping("/saveuser")
+    public String save(@Valid User user, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
-            return "redirect:/report";
+            return "redirect:/user";
         }
 
-        reportRepository.save(reports);
+        userRepository.save(user);
 
-        return "redirect:/report";
+        return "redirect:/user";
     }
 
-    @GetMapping("/deletereport")
-    public String deleteReport(@RequestParam("reportId") long reportId) {
-        reportRepository.deleteById(reportId);
+    @GetMapping("/deleteuser")
+    public String deleteUser(@RequestParam("usertId") long userId) {
+        userRepository.deleteById(userId);
 
-        return "redirect:/report";
+        return "redirect:/user";
     }
 }

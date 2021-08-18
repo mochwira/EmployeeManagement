@@ -24,7 +24,7 @@ public class DepartementController {
         model.addAttribute("departements", departementRepository.findAll(PageRequest.of(page, 8)));
         model.addAttribute("buatPageDepartement", page);
         model.addAttribute ( "buatDepartement", new Departement());
-        return "/departement/departement.html";
+        return "departement/departement.html";
     }
 
     @PostMapping("/savedepartement")
@@ -43,6 +43,6 @@ public class DepartementController {
     public String deleteDepartement(@RequestParam("departementId") int departementId) {
         departementRepository.deleteById(departementId);
 
-        return "redirect:/kategori";
+        return "redirect:/departement";
     }
 }

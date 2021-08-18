@@ -37,7 +37,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Reports.findAll", query = "SELECT r FROM Reports r"),
     @NamedQuery(name = "Reports.findByReportId", query = "SELECT r FROM Reports r WHERE r.reportId = :reportId"),
     @NamedQuery(name = "Reports.findByReportName", query = "SELECT r FROM Reports r WHERE r.reportName = :reportName"),
-    @NamedQuery(name = "Reports.findByKategoriId", query = "SELECT r FROM Reports r WHERE r.kategoriId = :kategoriId"),
     @NamedQuery(name = "Reports.findByReportDetail", query = "SELECT r FROM Reports r WHERE r.reportDetail = :reportDetail"),
     @NamedQuery(name = "Reports.findByReportTime", query = "SELECT r FROM Reports r WHERE r.reportTime = :reportTime"),
     @NamedQuery(name = "Reports.findByProjectId", query = "SELECT r FROM Reports r WHERE r.projectId = :projectId")})
@@ -56,10 +55,6 @@ public class Reports implements Serializable {
     private String reportName;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "kategori_id")
-    private int kategoriId;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "report_detail")
     private String reportDetail;
@@ -73,10 +68,11 @@ public class Reports implements Serializable {
     @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
     @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Employees employeeId;
+    @JoinColumn(name = "kategori_id", referencedColumnName = "kategori_id")
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    private Kategori kategoriId;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "reports", fetch = FetchType.LAZY)
     private Project project;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "reports", fetch = FetchType.LAZY)
-    private Kategori kategori;
 
     public Reports() {
     }
@@ -85,10 +81,9 @@ public class Reports implements Serializable {
         this.reportId = reportId;
     }
 
-    public Reports(Long reportId, String reportName, int kategoriId, String reportDetail, long projectId) {
+    public Reports(Long reportId, String reportName, String reportDetail, long projectId) {
         this.reportId = reportId;
         this.reportName = reportName;
-        this.kategoriId = kategoriId;
         this.reportDetail = reportDetail;
         this.projectId = projectId;
     }
@@ -107,14 +102,6 @@ public class Reports implements Serializable {
 
     public void setReportName(String reportName) {
         this.reportName = reportName;
-    }
-
-    public int getKategoriId() {
-        return kategoriId;
-    }
-
-    public void setKategoriId(int kategoriId) {
-        this.kategoriId = kategoriId;
     }
 
     public String getReportDetail() {
@@ -149,20 +136,20 @@ public class Reports implements Serializable {
         this.employeeId = employeeId;
     }
 
+    public Kategori getKategoriId() {
+        return kategoriId;
+    }
+
+    public void setKategoriId(Kategori kategoriId) {
+        this.kategoriId = kategoriId;
+    }
+
     public Project getProject() {
         return project;
     }
 
     public void setProject(Project project) {
         this.project = project;
-    }
-
-    public Kategori getKategori() {
-        return kategori;
-    }
-
-    public void setKategori(Kategori kategori) {
-        this.kategori = kategori;
     }
 
     @Override

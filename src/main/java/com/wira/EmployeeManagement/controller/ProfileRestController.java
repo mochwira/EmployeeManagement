@@ -1,8 +1,6 @@
 package com.wira.EmployeeManagement.controller;
 
-import com.wira.EmployeeManagement.model.Kategori;
 import com.wira.EmployeeManagement.model.User;
-import com.wira.EmployeeManagement.repository.KategoriRepository;
 import com.wira.EmployeeManagement.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +21,7 @@ public class ProfileRestController {
         //init
         up.setUserId(usp.getUserId());
         up.setFirstName(usp.getFirstName());
-        up.setLastName(usp.getLastName());
+        up.setLastName(usp.getLastName(up.getLastName()));
         up.setEmail(usp.getEmail());
         up.setPassword(usp.getPassword());
 

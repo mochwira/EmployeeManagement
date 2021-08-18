@@ -1,6 +1,7 @@
 package com.wira.EmployeeManagement.controller;
 
 import com.wira.EmployeeManagement.model.Reports;
+
 import com.wira.EmployeeManagement.repository.ReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
