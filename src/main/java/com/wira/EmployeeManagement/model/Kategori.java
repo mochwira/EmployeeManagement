@@ -67,7 +67,7 @@ public class Kategori implements Serializable {
         this.kategoriId = kategoriId;
     }
 
-    public String getNamaKategori() {
+    public Kategori getNamaKategori() {
         return namaKategori;
     }
 

@@ -18,7 +18,6 @@ $(document).ready(function(){
         } else {
 //         $('.myForm #kategoriId').val('0').hide(); ini aslinya
             $('.myForm #reportId').val('0').hide();
-
             $('.myForm #reportName').val('');
             $('.myForm #kategoriId').val('');
             $('.myForm #reportDetail').val('');

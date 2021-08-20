@@ -41,6 +41,8 @@ public class Role implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 2, max = 30)
     @Column(name = "role_id")
     private Long roleId;
     @Basic(optional = false)

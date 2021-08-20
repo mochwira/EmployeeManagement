@@ -103,7 +103,7 @@ public class User implements Serializable {
         this.firstName = firstName;
     }
 
-    public String getLastName(String lastName) {
+    public String getLastName() {
         return this.lastName;
     }
 
@@ -167,5 +167,5 @@ public class User implements Serializable {
     public String toString() {
         return "com.wira.EmployeeManagement.model.User[ userId=" + userId + " ]";
     }
-    
+
 }

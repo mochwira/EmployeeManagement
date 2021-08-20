@@ -48,34 +48,41 @@
           <thead class="bg-dark text-white">
           <tr>
             <!--              <td>ID Role</td>-->
-            <td>Nama User</td>
+            <td>Nama Depan</td>
+            <td>Nama Belakang</td>
+            <td>Email</td>
+            <td>Password</td>
             <td>Action</td>
           </tr>
           </thead>
           <tbody>
-          <tr th:each="r : ${roles}">
+          <tr th:each="r : ${users}">
             <!--              <td th:text="${r.roleId}"></td>-->
-            <td th:text="${r.name}"></td>
+            <td th:text="${u.name}"></td>
+            <td th:text="${u.firstName}"></td>
+            <td th:text="${u.lastName}"></td>
+            <td th:text="${u.email}"></td>
+            <td th:text="${u.password}"></td>
             <td>
               <a class="btn btn-primary text-white eBtn"
-                 th:href="@{http://localhost:8082/findrole/(roleId=${r.roleId})}">Edit</a>
+                 th:href="@{http://localhost:8082/findrole/(userId=${u.userId})}">Edit</a>
               <!--                delete id kayanya jadi delete KategoriId-->
-              <a class="btn btn-danger text-white rBtn" th:href="${'/deleterole?roleId='+r.roleId}">Remove</a>
+              <a class="btn btn-danger text-white rBtn" th:href="${'/deleteuser?userId='+u.userId}">Remove</a>
             </td>
           </tr>
           </tbody>
         </table>
         <ul class="nav nav-pills">
-          <li class="nav-item" th:each="i : ${#numbers.sequence(0, roles.totalPages-1)}">
+          <li class="nav-item" th:each="i : ${#numbers.sequence(0, users.totalPages-1)}">
             <a th:href="${'?page='+i}" th:text="${i}" class="nav-link"
-               th:classappend="${buatPageRole}==${i}?'active':''"></a>
+               th:classappend="${buatPageUser}==${i}?'active':''"></a>
           </li>
         </ul>
       </div>
 
       <!-- Modal Edit n New-->
       <div class="myForm">
-        <form th:action="@{/saverole}" method="post" th:object="${buatRole}">
+        <form th:action="@{/saveuser}" method="post" th:object="${buatUser}">
           <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="roleModalLabel" aria-hidden="true"
                id="roleModal">
             <div class="modal-dialog" role="document">
@@ -87,11 +94,32 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <input type="text" class="form-control" id="roleId" name="roleId" value="" th:field="*{roleId}">
+                  <input type="text" class="form-control" id="userId" name="userId" value="" th:field="*{userId}">
                   <div class="form-group">
-                    <label for="name" class=" label">Nama</label>
-                    <input type="text" class="form-control" id="name" name="name" value="" th:field="*{name}">
+                    <label for="firstName" class=" label">Nama Depan</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" value="" th:field="*{firstName}">
                   </div>
+                  <div class="form-group">
+                    <label for="lastName" class=" label">Nama Belakang</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" value="" th:field="*{lastName}">
+                  </div>
+                  <div class="form-group">
+                    <label for="email" class=" label">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" value="" th:field="*{email}">
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class=" label">Password</label>
+                    <input type="text" class="form-control" id="password" name="password" value="" th:field="*{password}">
+                  </div>
+                  <label>Role<span class="redColor">*</span></label>
+                  <select th:field="*{userId}" class="form-control" required>
+                    <option value="">Pilih</option>
+                    <option
+                            th:each="role : ${users}"
+                            th:value="${role.roleId}"
+                            th:text="${role.namaRole}">
+                    </option>
+                  </select>
 
                 </div>
                 <div class="modal-footer">
@@ -100,7 +128,7 @@
                     Swal.fire({
                     position: 'top-center',
                     icon: 'success',
-                    title: 'Role has been saved',
+                    title: 'User has been added',
                     showConfirmButton: false,
                     timer: 13500
                     })">Save</button>
@@ -112,7 +140,7 @@
       </div>
 
       <!-- Modal Edit n Remove di ganti My Remove-->
-      <div class="myRemoveRole">
+      <div class="myRemoveUser">
         <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="roleModalLabel" aria-hidden="true"
              id="roleModal">
           <div class="modal-dialog" role="document">

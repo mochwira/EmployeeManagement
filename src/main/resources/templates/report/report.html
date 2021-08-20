@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>Kategori Management</title>
+    <title>Report Management</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Image -->
@@ -49,38 +49,40 @@
                 <table class="table table-hover" id="reporttable">
                     <thead class="bg-dark text-white">
                     <tr>
-                        <!--            <td>ID Kategori</td>-->
                         <td>Nama Report</td>
-                        <td>Kategori</td>
+                        <td>Kategori Report</td>
                         <td>Detail Report</td>
                         <td>Waktu Report</td>
                         <td>Action</td>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="k : ${kategoris}">
-                        <!--            <td th:text="${k.kategoriId}"></td>-->
-                        <td th:text="${k.namaKategori}"></td>
+                    <tr th:each="k : ${reports}">
+                        <td th:text="${r.reportId}"></td>
+                        <td th:text="${r.reportName}"></td>
+                        <td th:text="${r.kategoriId}"></td>
+                        <td th:text="${r.reportDetail}"></td>
+                        <td th:text="${r.reportTime}"></td>
                         <td>
                             <a class="btn btn-primary text-white eBtn"
-                               th:href="@{http://localhost:8082/findreport/(kategoriId=${k.kategoriId})}">Edit</a>
+                               th:href="@{http://localhost:8082/findreport/(reportId=${k.reportId})}">Edit</a>
                             <!--                delete id kayanya jadi delete KategoriId-->
-                            <a class="btn btn-danger text-white rBtn" th:href="${'/delete?kategoriId='+k.kategoriId}">Remove</a>
+                            <a class="btn btn-danger text-white rBtn" th:href="${'/delete?reportId='+k.reportId}">Remove</a>
                         </td>
                     </tr>
                     </tbody>
                 </table>
                 <ul class="nav nav-pills">
-                    <li class="nav-item" th:each="i : ${#numbers.sequence(0, kategoris.totalPages-1)}">
+                    <li class="nav-item" th:each="i : ${#numbers.sequence(0, reports.totalPages-1)}">
                         <a th:href="${'?page='+i}" th:text="${i}" class="nav-link"
-                           th:classappend="${buatPageKategori}==${i}?'active':''"></a>
+                           th:classappend="${buatPageReport}==${i}?'active':''"></a>
                     </li>
                 </ul>
             </div>
 
             <!-- Modal Edit n New-->
             <div class="myForm">
-                <form th:action="@{/savereport}" method="post" th:object="${buatKategori}">
+                <form th:action="@{/savereport}" method="post" th:object="${buatReport}">
                     <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
                          id="exampleModal">
                         <div class="modal-dialog" role="document">
@@ -92,22 +94,22 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="text" class="form-control" id="kategoriId" name="kategoriId" value="" th:field="*{kategoriId}">
+                                    <input type="text" class="form-control" id="reportId" name="reportId" value="" th:field="*{reportId}">
                                     <div class="form-group">
-                                        <label for="namaKategori" class=" label">Nama</label>
+                                        <label for="reportName" class=" label">Nama Report</label>
                                         <td>
-                                            <input type="text" class="form-control" id="namaKategori" name="namaKategori" value="" th:field="*{namaKategori}">
+                                            <input type="text" class="form-control" id="reportName" name="reportName" value="" th:field="*{reportName}">
                                         </td>
-                                        <td th:if="${#fields.hasErrors('namaKategori')}" th:errors="*{namaKategori}">Name Error</td>
+                                        <td th:if="${#fields.hasErrors('reportName')}" th:errors="*{reportName}">Name Error</td>
                                     </div>
 
                                     <label>Kategori<span class="redColor">*</span></label>
                                     <select th:field="*{kategoriId}" class="form-control" required>
                                         <option value="">Pilih</option>
                                         <option
-                                                th:each="kategori : ${kategoris}"
-                                                th:value="${role.roleId}"
-                                                th:text="${role.namaRole}">
+                                                th:each="kategori : ${reports}"
+                                                th:value="${kategori.kategoriId}"
+                                                th:text="${kategori.namaKategori}">
                                         </option>
                                     </select>
 

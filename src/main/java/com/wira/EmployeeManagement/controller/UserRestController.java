@@ -21,7 +21,7 @@ public class UserRestController {
         //init
         u.getUserId();
         u.setFirstName(up.getFirstName());
-        //u.setLastName(up.getLastName());
+        u.setLastName(up.getLastName());
         u.setEmail(up.getEmail());
         u.setPassword(up.getPassword());
         u.setRoleId(up.getRoleId());

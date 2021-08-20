@@ -21,7 +21,7 @@ public class ProfileRestController {
         //init
         up.setUserId(usp.getUserId());
         up.setFirstName(usp.getFirstName());
-        up.setLastName(usp.getLastName(up.getLastName()));
+        up.setLastName(usp.getLastName());
         up.setEmail(usp.getEmail());
         up.setPassword(usp.getPassword());
 

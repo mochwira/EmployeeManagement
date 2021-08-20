@@ -27,7 +27,7 @@
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
 
   <link rel="stylesheet" th:href="@{/css/stylesidebar.css}"/>
-  <script th:src="@{/js/user.js}"></script>
+  <script th:src="@{/js/employee.js}"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -39,38 +39,42 @@
     <div class="container">
       <div class="container">
         <button class="btn btn-primary nBtn">New</button>
-        <table class="table table-hover" id="kategoritable">
+        <table class="table table-hover" id="employeetable">
           <thead class="bg-dark text-white">
           <tr>
-            <!--            <td>ID Kategori</td>-->
-            <td>Nama </td>
+
+            <td>Nama Depan</td>
+            <td>Nama Belakang</td>
+            <td>Email</td>
             <td>Action</td>
           </tr>
           </thead>
           <tbody>
-          <tr th:each="k : ${kategoris}">
-            <!--            <td th:text="${k.kategoriId}"></td>-->
-            <td th:text="${k.namaKategori}"></td>
+          <tr th:each="k : ${employees}">
+
+            <td th:text="${e.firstName}"></td>
+            <td th:text="${e.Lastname}"></td>
+            <td th:text="${e.email}"></td>
             <td>
               <a class="btn btn-primary text-white eBtn"
-                 th:href="@{http://localhost:8082/findkategori/(kategoriId=${k.kategoriId})}">Edit</a>
+                 th:href="@{http://localhost:8082/findemployee/(employeeId=${e.employeeId})}">Edit</a>
               <!--                delete id kayanya jadi delete KategoriId-->
-              <a class="btn btn-danger text-white rBtn" th:href="${'/delete?kategoriId='+k.kategoriId}">Remove</a>
+              <a class="btn btn-danger text-white rBtn" th:href="${'/delete?employeeId='+e.employeeId}">Remove</a>
             </td>
           </tr>
           </tbody>
         </table>
         <ul class="nav nav-pills">
-          <li class="nav-item" th:each="i : ${#numbers.sequence(0, kategoris.totalPages-1)}">
+          <li class="nav-item" th:each="i : ${#numbers.sequence(0, employees.totalPages-1)}">
             <a th:href="${'?page='+i}" th:text="${i}" class="nav-link"
-               th:classappend="${buatPageKategori}==${i}?'active':''"></a>
+               th:classappend="${buatPageEmployee}==${i}?'active':''"></a>
           </li>
         </ul>
       </div>
 
       <!-- Modal Edit n New-->
       <div class="myForm">
-        <form th:action="@{/save}" method="post" th:object="${buatKategori}">
+        <form th:action="@{/saveemployee}" method="post" th:object="${buatEmployee}">
           <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
                id="exampleModal">
             <div class="modal-dialog" role="document">
@@ -82,14 +86,23 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <input type="text" class="form-control" id="kategoriId" name="kategoriId" value="" th:field="*{kategoriId}">
+                  <input type="text" class="form-control" id="employeeId" name="employeeId" value="" th:field="*{employeeId}">
                   <div class="form-group">
-                    <label for="namaKategori" class=" label">Nama</label>
+                    <label for="firstName" class=" label">Nama Depan</label>
                     <td>
-                      <input type="text" class="form-control" id="namaKategori" name="namaKategori" value="" th:field="*{namaKategori}">
+                      <input type="text" class="form-control" id="firstName" name="firstName" value="" th:field="*{firstName}">
                     </td>
-                    <td th:if="${#fields.hasErrors('namaKategori')}" th:errors="*{namaKategori}">Name Error</td>
+                    <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</td>
                   </div>
+                  <div class="form-group">
+                    <label for="lastName" class=" label">Nama Belakang</label>
+                    <td>
+                      <input type="text" class="form-control" id="lastName" name="lastName" value="" th:field="*{lastName}">
+                    </td>
+                    <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</td>
+                  </div>
+                  <input type="text" class="form-control" id="departementId" name="departementId" value="" th:field="*{departementId}">
+                  <input type="text" class="form-control" id="userId" name="userId" value="" th:field="*{userId}">
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -132,7 +145,7 @@
 
 <script>
     $(document).ready( function () {
-    $('#kategoritable').DataTable();
+    $('#employeetable').DataTable();
 } );
 </script>
 

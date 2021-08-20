@@ -22,7 +22,7 @@ public class ReportRestController {
         //init
         r.getReportId();
         r.setReportName(rp.getReportName());
-        r.setKategoriId(rp.getKategoriId());
+        r.setKategoriId(rp.getKategoriId().getNamaKategori());
         r.setReportDetail(rp.getReportDetail());
         r.setReportTime(rp.getReportTime());
         r.setEmployeeId(rp.getEmployeeId());

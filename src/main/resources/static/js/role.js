@@ -15,7 +15,6 @@ $(document).ready(function(){
         } else {
 //         $('.myForm #kategoriId').val('0').hide(); ini aslinya
             $('.myForm #roleId').val('0').hide();
-
             $('.myForm #name').val('');
             $('.myForm #exampleModal').modal();
         }

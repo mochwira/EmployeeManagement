@@ -17,9 +17,7 @@ $(document).ready(function(){
             $('.myForm #exampleModal').modal();
         } else {
 //         $('.myForm #kategoriId').val('0').hide(); ini aslinya
-            $('.myForm #projectId').val('0').hide();
-
-            $('.myForm #reportName').val('');
+            $('.myForm #projectId').val('0').hide()
             $('.myForm #namaProject').val('');
             $('.myForm #keteranganProject').val('');
             $('.myForm #asalProject').val('');

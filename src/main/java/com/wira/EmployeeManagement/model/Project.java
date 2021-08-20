@@ -45,6 +45,8 @@ public class Project implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 2, max = 30)
     @Column(name = "project_id")
     private Long projectId;
     @Basic(optional = false)

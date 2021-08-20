@@ -39,6 +39,8 @@ public class Departement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 30)
     @Column(name = "departement_id")
     private Integer departementId;
     @Basic(optional = false)

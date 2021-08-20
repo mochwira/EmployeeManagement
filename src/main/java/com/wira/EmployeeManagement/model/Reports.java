@@ -46,6 +46,8 @@ public class Reports implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 2, max = 30)
     @Column(name = "report_id")
     private Long reportId;
     @Basic(optional = false)
