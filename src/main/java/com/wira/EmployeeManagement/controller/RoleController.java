@@ -32,7 +32,7 @@ public class RoleController {
 
     @PostMapping("/saverole")
     //@Valid BindingResult bindingResult
-    public String save(@Valid Role role, BindingResult bindingResult) {
+    public String saveRole(@Valid Role role, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
             return "redirect:/kategori";
         }
@@ -43,10 +43,10 @@ public class RoleController {
     }
 
     @GetMapping("/deleterole")
-    public String deleteRole(@RequestParam("roleId") int roleId) {
+    public String deleteRole(@RequestParam("roleId") long roleId) {
         //something problem in here
         roleRepository.deleteById((long) roleId);
 
-        return "redirect:/kategori";
+        return "redirect:/role";
     }
 }
