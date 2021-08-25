@@ -17,7 +17,7 @@ public class RoleRestCotroller {
     @GetMapping("/findrole")
     public Role createFindOne(@RequestParam("roleId") Integer roleId) {
         Role r = new Role();
-        Role rl = roleRepository.getOne(Long.valueOf(roleId));
+        Role rl = roleRepository.getOne(Integer.valueOf(roleId));
 
         //init
         r.setRoleId(rl.getRoleId());

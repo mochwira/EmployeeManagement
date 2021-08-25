@@ -45,7 +45,7 @@ public class RoleController {
     @GetMapping("/deleterole")
     public String deleteRole(@RequestParam("roleId") long roleId) {
         //something problem in here
-        roleRepository.deleteById((long) roleId);
+        roleRepository.deleteById((int) roleId);
 
         return "redirect:/role";
     }

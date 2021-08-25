@@ -26,6 +26,6 @@ public class RoleService implements RoleInterface{
 
     @Override
     public Optional<Role> getRoleById(Long roleId) {
-        return roleRepository.findById(roleId);
+        return Optional.empty();
     }
 }
