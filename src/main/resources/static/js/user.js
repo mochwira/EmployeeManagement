@@ -14,7 +14,7 @@ $(document).ready(function(){
                 $('.myForm #email').val(response.email);
                 $('.myForm #password').val(response.password);
             });
-            $('.myForm #exampleModal').modal();
+            $('.myForm #userModal').modal();
         } else {
 //         $('.myForm #kategoriId').val('0').hide(); ini aslinya
             $('.myForm #userId').val('0').hide();
@@ -22,7 +22,7 @@ $(document).ready(function(){
             $('.myForm #lastName').val('');
             $('.myForm #email').val('');
             $('.myForm #password').val('');
-            $('.myForm #exampleModal').modal();
+            $('.myForm #userModal').modal();
         }
 
     });
@@ -30,8 +30,8 @@ $(document).ready(function(){
     $('.rBtn').click(function(event){
         event.preventDefault();
         var href=$(this).attr('href');
-        $(".myRemove .dBtn").attr('href',href);
-        $('.myRemove #exampleModal').modal();
+        $(".myRemoveUser .dBtn").attr('href',href);
+        $('.myRemoveUser #userModal').modal();
 
     });
 

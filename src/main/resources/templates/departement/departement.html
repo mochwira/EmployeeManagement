@@ -50,7 +50,7 @@
         <tbody>
         <tr th:each="d : ${departements}">
 <!--            <td th:text="${k.kategoriId}"></td>-->
-            <td th:text="${d.namaDepartements}"></td>
+            <td th:text="${d.namaDepartement}"></td>
             <td>
                 <a class="btn btn-primary text-white eBtn"
                    th:href="@{http://localhost:8082/finddepartement/(departementId=${d.departementId})}">Edit</a>
@@ -71,12 +71,12 @@
         <!-- Modal Edit n New-->
         <div class="myForm">
         <form th:action="@{/savedepartement}" method="post" th:object="${buatDepartement}">
-        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-             id="exampleModal">
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="departementModalLabel" aria-hidden="true"
+             id="departementModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Save or Update</h5>
+                        <h5 class="modal-title" id="departementModalLabel">Save or Update</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -88,7 +88,7 @@
                             <td>
                             <input type="text" class="form-control" id="namaDepartement" name="namaDepartement" value="" th:field="*{namaDepartement}">
                             </td>
-                            <td th:if="${#fields.hasErrors('namaDepartement')}" th:errors="*{namaDepartement}">Name Error</td>
+<!--                            <td th:if="${#fields.hasErrors('namaDepartement')}" th:errors="*{namaDepartement}">Name Error</td>-->
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -102,9 +102,9 @@
 </div>
 
         <!-- Modal Edit n Remove-->
-        <div class="myRemove">
-    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-         id="exampleModal">
+        <div class="myRemoveDepartement">
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="departementModalLabel" aria-hidden="true"
+         id="departementModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

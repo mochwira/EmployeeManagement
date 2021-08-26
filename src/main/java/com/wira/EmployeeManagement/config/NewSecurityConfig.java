@@ -33,10 +33,7 @@ public class NewSecurityConfig  extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
 
                 .antMatchers("/").permitAll()
-                .antMatchers("/report").hasRole("admin")
-                .antMatchers("/report").hasRole("user")
-                .antMatchers("/project").hasRole("admin")
-                .antMatchers("/rpoject").hasRole("user")
+                //.antMatchers("/report").hasRole("admin")
                 //.antMatchers("/User").permitAll()
                 .antMatchers("/password/forgot").permitAll()
                 .antMatchers(HttpMethod.POST, "/password/forgot/request").permitAll()

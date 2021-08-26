@@ -11,13 +11,13 @@ $(document).ready(function(){
                 $('.myForm #departementId').val(response.departementId).hide();
                 $('.myForm #namaDepartement').val(response.namaDepartement);
             });
-            $('.myForm #exampleModal').modal();
+            $('.myForm #departementModal').modal();
         } else {
 //         $('.myForm #kategoriId').val('0').hide(); ini aslinya
             $('.myForm #departementId').val('0').hide();
 
             $('.myForm #namaDepartement').val('');
-            $('.myForm #exampleModal').modal();
+            $('.myForm #departementModal').modal();
         }
 
     });
@@ -25,8 +25,8 @@ $(document).ready(function(){
     $('.rBtn').click(function(event){
         event.preventDefault();
         var href=$(this).attr('href');
-        $(".myRemove .dBtn").attr('href',href);
-        $('.myRemove #exampleModal').modal();
+        $(".myRemoveDepartement .dBtn").attr('href',href);
+        $('.myRemoveDepartement #departementModal').modal();
 
     });
 

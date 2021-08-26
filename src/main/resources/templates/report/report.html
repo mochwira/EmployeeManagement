@@ -42,9 +42,10 @@
                 <button class="btn btn-primary nBtn">New</button>
 
                     <div class="container">
-                        <p>Click button below to download Excel file.</p>
+                        <p>Download File Report</p>
                         <a href="http://localhost:8082/reportfile" class="btn btn-primary" onclick="Swal.fire('Download Complete', 'Check Your Data ', 'success')">Download Excel File</a>
                     </div>
+
                 </div>
                 <table class="table table-hover" id="reporttable">
                     <thead class="bg-dark text-white">
@@ -83,12 +84,12 @@
             <!-- Modal Edit n New-->
             <div class="myForm">
                 <form th:action="@{/savereport}" method="post" th:object="${buatReport}">
-                    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-                         id="exampleModal">
+                    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true"
+                         id="reportModal">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Save or Update</h5>
+                                    <h5 class="modal-title" id="reportModalLabel">Save or Update</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -145,13 +146,13 @@
             </div>
 
             <!-- Modal Edit n Remove-->
-            <div class="myRemove">
-                <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-                     id="exampleModal">
+            <div class="myRemoveReport">
+                <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true"
+                     id="reportModal">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Save or Update</h5>
+                                <h5 class="modal-title" id="reportModalLabel">Save or Update</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>

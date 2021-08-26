@@ -14,7 +14,7 @@ $(document).ready(function(){
                 $('.myForm #asalProject').val(response.asalProject);
                 $('.myForm #durasiProject').val(response.durasiProject);
             });
-            $('.myForm #exampleModal').modal();
+            $('.myForm #projectModal').modal();
         } else {
 //         $('.myForm #kategoriId').val('0').hide(); ini aslinya
             $('.myForm #projectId').val('0').hide()
@@ -22,7 +22,7 @@ $(document).ready(function(){
             $('.myForm #keteranganProject').val('');
             $('.myForm #asalProject').val('');
             $('.myForm #durasiProject').val('');
-            $('.myForm #exampleModal').modal();
+            $('.myForm #projectModal').modal();
         }
 
     });
@@ -31,7 +31,7 @@ $(document).ready(function(){
         event.preventDefault();
         var href=$(this).attr('href');
         $(".myRemove .dBtn").attr('href',href);
-        $('.myRemove #exampleModal').modal();
+        $('.myRemove #projectModal').modal();
 
     });
 

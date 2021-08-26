@@ -1,8 +1,6 @@
 package com.wira.EmployeeManagement.controller;
 
-import com.wira.EmployeeManagement.model.Kategori;
 import com.wira.EmployeeManagement.model.Role;
-import com.wira.EmployeeManagement.repository.KategoriRepository;
 import com.wira.EmployeeManagement.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +13,9 @@ public class RoleRestCotroller {
     private RoleRepository roleRepository;
 
     @GetMapping("/findrole")
-    public Role createFindOne(@RequestParam("roleId") Integer roleId) {
+    public Role createFindOne(@RequestParam("roleId") Long roleId) {
         Role r = new Role();
-        Role rl = roleRepository.getOne(Integer.valueOf(roleId));
+        Role rl = roleRepository.getOne(Long.valueOf(roleId));
 
         //init
         r.setRoleId(rl.getRoleId());

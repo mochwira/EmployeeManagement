@@ -1,8 +1,7 @@
 package com.wira.EmployeeManagement.controller;
 
-import com.wira.EmployeeManagement.model.Kategori;
+
 import com.wira.EmployeeManagement.model.Role;
-import com.wira.EmployeeManagement.repository.KategoriRepository;
 import com.wira.EmployeeManagement.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -12,7 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
 
 import javax.validation.Valid;
 
@@ -34,7 +33,7 @@ public class RoleController {
     //@Valid BindingResult bindingResult
     public String saveRole(@Valid Role role, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
-            return "redirect:/kategori";
+            return "redirect:/role";
         }
 
         roleRepository.save(role);
@@ -43,9 +42,9 @@ public class RoleController {
     }
 
     @GetMapping("/deleterole")
-    public String deleteRole(@RequestParam("roleId") long roleId) {
+    public String deleteRole(@RequestParam("roleId") Long roleId) {
         //something problem in here
-        roleRepository.deleteById((int) roleId);
+        roleRepository.deleteById((Long) roleId);
 
         return "redirect:/role";
     }

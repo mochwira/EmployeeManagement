@@ -75,12 +75,12 @@
       <!-- Modal Edit n New-->
       <div class="myForm">
         <form th:action="@{/saveemployee}" method="post" th:object="${buatEmployee}">
-          <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-               id="exampleModal">
+          <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="employeeModalLabel" aria-hidden="true"
+               id="employeeModal">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Save or Update</h5>
+                  <h5 class="modal-title" id="employeeModalLabel">Save or Update</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -101,8 +101,14 @@
                     </td>
                     <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</td>
                   </div>
-                  <input type="text" class="form-control" id="departementId" name="departementId" value="" th:field="*{departementId}">
-                  <input type="text" class="form-control" id="userId" name="userId" value="" th:field="*{userId}">
+
+                  <div class="form-group">
+                    <label for="email" class=" label">Email</label>
+                    <td>
+                      <input type="text" class="form-control" id="email" name="email" value="" th:field="*{email}">
+                    </td>
+                    <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</td>
+                  </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -115,9 +121,9 @@
       </div>
 
       <!-- Modal Edit n Remove-->
-      <div class="myRemove">
-        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-             id="exampleModal">
+      <div class="myRemoveEmployee">
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="employeeModalLabel" aria-hidden="true"
+             id="employeeModal">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">

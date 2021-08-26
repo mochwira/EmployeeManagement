@@ -15,7 +15,7 @@ $(document).ready(function(){
                 $('.myForm #departementId').val(response.departementId);
                 $('.myForm #userId').val(response.userId);
             });
-            $('.myForm #exampleModal').modal();
+            $('.myForm #employeeModal').modal();
         } else {
 //         $('.myForm #kategoriId').val('0').hide(); ini aslinya
             $('.myForm #employeeId').val('0').hide();
@@ -24,7 +24,7 @@ $(document).ready(function(){
             $('.myForm #email').val('');
             $('.myForm #departementId').val('');
             $('.myForm #userId').val('');
-            $('.myForm #exampleModal').modal();
+            $('.myForm #employeeModal').modal();
         }
 
     });
@@ -32,8 +32,8 @@ $(document).ready(function(){
     $('.rBtn').click(function(event){
         event.preventDefault();
         var href=$(this).attr('href');
-        $(".myRemove .dBtn").attr('href',href);
-        $('.myRemove #exampleModal').modal();
+        $(".myRemoveEmployee .dBtn").attr('href',href);
+        $('.myRemoveEmployee #employeeModal').modal();
 
     });
 

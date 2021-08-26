@@ -14,7 +14,7 @@ $(document).ready(function(){
                 $('.myForm #reportDetail').val(response.reportDetail);
                 $('.myForm #reportTime').val(response.reportTime);
             });
-            $('.myForm #exampleModal').modal();
+            $('.myForm #reportModal').modal();
         } else {
 //         $('.myForm #kategoriId').val('0').hide(); ini aslinya
             $('.myForm #reportId').val('0').hide();
@@ -22,7 +22,7 @@ $(document).ready(function(){
             $('.myForm #kategoriId').val('');
             $('.myForm #reportDetail').val('');
             $('.myForm #reportTime').val('');
-            $('.myForm #exampleModal').modal();
+            $('.myForm #reportModal').modal();
         }
 
     });
@@ -30,8 +30,8 @@ $(document).ready(function(){
     $('.rBtn').click(function(event){
         event.preventDefault();
         var href=$(this).attr('href');
-        $(".myRemove .dBtn").attr('href',href);
-        $('.myRemove #exampleModal').modal();
+        $(".myRemoveReport .dBtn").attr('href',href);
+        $('.myRemoveReport #reportModal').modal();
 
     });
 
