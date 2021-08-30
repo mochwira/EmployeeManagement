@@ -17,6 +17,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -39,6 +40,8 @@ public class Kategori implements Serializable {
     @Column(name = "kategori_id")
     private Integer kategoriId;
     @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "nama_kategori")
     private String namaKategori;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "kategoriId", fetch = FetchType.LAZY)

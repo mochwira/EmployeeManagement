@@ -5,12 +5,12 @@
     <class>com.wira.EmployeeManagement.model.Kategori</class>
     <class>com.wira.EmployeeManagement.model.Employees</class>
     <class>com.wira.EmployeeManagement.model.Reports</class>
-    <class>com.wira.EmployeeManagement.model.Departement</class>
     <class>com.wira.EmployeeManagement.model.ReportStatus</class>
     <class>com.wira.EmployeeManagement.model.Role</class>
     <class>com.wira.EmployeeManagement.model.User</class>
     <class>com.wira.EmployeeManagement.model.Project</class>
     <class>com.wira.EmployeeManagement.model.File</class>
+    <class>com.wira.EmployeeManagement.model.Departement</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_employee?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

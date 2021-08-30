@@ -35,6 +35,24 @@
 } );
 </script>
 
+<script>
+    $(document).ready( function () {
+    $('#departementtable').DataTable();
+} );
+</script>
+
+<script>
+    $(document).ready( function () {
+    $('#rolertable').DataTable();
+} );
+</script>
+
+<script>
+    $(document).ready( function () {
+    $('#userstable').DataTable();
+} );
+</script>
+
 <div class="wrapper">
   <!-- Sidebar  -->
   <div th:insert="fragment/sidebar.html :: sidebar"></div>
@@ -59,38 +77,7 @@
           </div>
         </div>
 
-
-
-        <!--      Carousel-->
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img th:src="@{/img/moun1.jpg}" class="d-block w-100" alt="0">
-            </div>
-            <div class="carousel-item">
-              <img th:src="@{/img/moun2.jpg}" class="d-block w-100" alt="1">
-            </div>
-            <div class="carousel-item">
-              <img th:src="@{/img/moun3.jpg}" class="d-block w-100" alt="2">
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-
-        <!--      end of carosel-->
-
+<!--        Start section kategori-->
         <h2 class="fs-2 fw-bold">Kategori</h2>
         <div class="container">
           <table class="table table-hover" id="kategoritable">
@@ -110,6 +97,78 @@
           </table>
 
         </div>
+        <!--        End section kategori-->
+
+        <!--        Start section Departement-->
+        <h2 class="fs-2 fw-bold">Departement</h2>
+        <div class="container">
+          <table class="table table-hover" id="departementtable">
+            <thead class="bg-dark text-white">
+            <tr>
+              <!--            <td>ID Kategori</td>-->
+              <td>Nama Departement</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="dp : ${departements}">
+              <!--            <td th:text="${k.kategoriId}"></td>-->
+              <td th:text="${dp.departementName}" th:href="@{http://localhost:8082/finddept/(departementId=${dp.departementId})}"></td>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <!--        End section Departement-->
+
+        <!--        Start section Role-->
+        <h2 class="fs-2 fw-bold">Role</h2>
+        <div class="container">
+          <table class="table table-hover" id="rolertable">
+            <thead class="bg-dark text-white">
+            <tr>
+              <!--            <td>ID Kategori</td>-->
+              <td>Nama Role</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="re : ${rolers}">
+              <!--            <td th:text="${k.kategoriId}"></td>-->
+              <td th:text="${re.name}" th:href="@{http://localhost:8082/findrolers/(roleId=${re.roleId})}"></td>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <!--        End section Role-->
+
+        <!--        Start section User-->
+        <h2 class="fs-2 fw-bold">User</h2>
+        <div class="container">
+          <table class="table table-hover" id="userstable">
+            <thead class="bg-dark text-white">
+            <tr>
+              <td>ID User</td>
+              <td>Nama Depan</td>
+              <td>Nama Belakang</td>
+              <td>User</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="us : ${users}">
+              <!--            <td th:text="${k.kategoriId}"></td>-->
+              <td th:text="${us.userId}" th:href="@{http://localhost:8082/findusers/(userId=${us.userId})}"></td>
+              <td th:text="${us.firstName}" th:href="@{http://localhost:8082/findusers/(userId=${us.userId})}"></td>
+              <td th:text="${us.lastName}" th:href="@{http://localhost:8082/findusers/(userId=${us.userId})}"></td>
+              <td th:text="${us.email}" th:href="@{http://localhost:8082/findusers/(userId=${us.userId})}"></td>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <!--        End section User-->
 
     </div>
 

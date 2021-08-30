@@ -1,9 +1,7 @@
 package com.wira.EmployeeManagement.controller;
 
 import com.wira.EmployeeManagement.model.Departement;
-import com.wira.EmployeeManagement.model.Kategori;
 import com.wira.EmployeeManagement.repository.DepartementRepository;
-import com.wira.EmployeeManagement.repository.KategoriRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

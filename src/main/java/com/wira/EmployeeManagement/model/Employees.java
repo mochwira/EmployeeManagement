@@ -43,8 +43,6 @@ public class Employees implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 2, max = 30)
     @Column(name = "employee_id")
     private Integer employeeId;
     @Basic(optional = false)
