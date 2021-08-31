@@ -7,11 +7,12 @@
     <!-- Image -->
     <link rel="icon" th:href="@{/img/menu.png}"/>
 
-    <script src="js/sweetalert2.all.min.js"></script>
 
     <!--Online-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script src="js/sweetalert2.all.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
@@ -21,12 +22,12 @@
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" th:href="@{/css/stylesidebar.css}"/>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
-    <script th:src="@{/js/setting.js}"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+    <link rel="stylesheet" th:href="@{/css/stylesidebar.css}"/>\
+    <link rel="stylesheet" th:href="@{/css/setting.css}"/>
 </head>
 <body>
 <div class="wrapper">
@@ -39,152 +40,107 @@
 
             <div class="container">
 
-                <div class="row">
-
-                    <div class="col-md-3">
-                        <ul class="nav nav-pills nav-stacked admin-menu" >
-                            <li class="active"><a href="" data-target-id="profile"><i class="glyphicon glyphicon-user"></i> Profile</a></li>
-                            <li><a href="" data-target-id="change-password"><i class="glyphicon glyphicon-lock"></i> Change Password</a></li>
-                            <li><a href="" data-target-id="settings"><i class="glyphicon glyphicon-cog"></i> Settings</a></li>
-                            <li><a href="" data-target-id="logout"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-9  admin-content" id="profile">
-                        <div class="panel panel-info" style="margin: 1em;">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Name</h3>
-                            </div>
-                            <div class="panel-body">
-                                Ashish Patel
-                            </div>
-                        </div>
-                        <div class="panel panel-info" style="margin: 1em;">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Email</h3>
-                            </div>
-                            <div class="panel-body">
-                                ashishpatel0720@gmail.com
-                            </div>
-                        </div>
-                        <div class="panel panel-info" style="margin: 1em;">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Last Password Change</h3>
-
-                            </div>
-                            <div class="panel-body">
-                                4 days Ago
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-9  admin-content" id="settings">
-                        <div class="panel panel-info" style="margin: 1em;">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Notification</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="label label-success">allowed</div>
-                            </div>
-                        </div>
-                        <div class="panel panel-info" style="margin: 1em;">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Newsletter</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="badge">Monthly</div>
-                            </div>
-                        </div>
-                        <div class="panel panel-info" style="margin: 1em;">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Admin</h3>
-
-                            </div>
-                            <div class="panel-body">
-                                <div class="label label-success">yes</div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-9  admin-content" id="change-password">
-                        <form action="/password" method="post">
-
-
-                            <div class="panel panel-info" style="margin: 1em;">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><label for="new_password" class="control-label panel-title">New Password</label></h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="form-group">
-                                        <div class="col-sm-10">
-                                            <input type="password" class="form-control" name="password" id="new_password" >
-                                        </div>
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-lg-4 pb-5">
+                            <!-- Account Sidebar-->
+                            <div class="author-card pb-3">
+                                <div class="author-card-cover" style="background-image: url(https://demo.createx.studio/createx-html/img/widgets/author/cover.jpg);"><a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-award text-md"></i>&nbsp;290 points</a></div>
+                                <div class="author-card-profile">
+                                    <div class="author-card-avatar"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Daniel Adams">
                                     </div>
-
-                                </div>
-                            </div>
-
-
-                            <div class="panel panel-info" style="margin: 1em;">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><label for="confirm_password" class="control-label panel-title">Confirm password</label></h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="form-group">
-                                        <div class="col-sm-10">
-                                            <input type="password" class="form-control" name="password_confirmation" id="confirm_password" >
-                                        </div>
+                                    <div class="author-card-details">
+                                        <h5 class="author-card-name text-lg">Daniel Adams</h5><span class="author-card-position">Joined February 06, 2017</span>
                                     </div>
                                 </div>
                             </div>
-
-
-                            <div class="panel panel-info border" style="margin: 1em;">
-                                <div class="panel-body">
-                                    <div class="form-group">
-                                        <div class="pull-left">
-                                            <input type="submit" class="form-control btn btn-primary" name="submit" id="submit">
+                            <div class="wizard">
+                                <nav class="list-group list-group-flush">
+                                    <a class="list-group-item" href="#">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div><i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                                                <div class="d-inline-block font-weight-medium text-uppercase">Orders List</div>
+                                            </div><span class="badge badge-secondary">6</span>
                                         </div>
+                                    </a><a class="list-group-item active" href="#"><i class="fe-icon-user text-muted"></i>Profile Settings</a><a class="list-group-item" href="#"><i class="fe-icon-map-pin text-muted"></i>Addresses</a>
+                                    <a class="list-group-item" href="#">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div><i class="fe-icon-heart mr-1 text-muted"></i>
+                                                <div class="d-inline-block font-weight-medium text-uppercase">My Wishlist</div>
+                                            </div><span class="badge badge-secondary">3</span>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="#">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div><i class="fe-icon-tag mr-1 text-muted"></i>
+                                                <div class="d-inline-block font-weight-medium text-uppercase">My Tickets</div>
+                                            </div><span class="badge badge-secondary">4</span>
+                                        </div>
+                                    </a>
+                                </nav>
+                            </div>
+                        </div>
+                        <!-- Profile Settings-->
+                        <div class="col-lg-8 pb-5">
+                            <form class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="account-fn">First Name</label>
+                                        <input class="form-control" type="text" id="account-fn" value="Daniel" required="">
                                     </div>
                                 </div>
-                            </div>
-
-                        </form>
-                    </div>
-
-                    <div class="col-md-9  admin-content" id="settings"></div>
-
-                    <div class="col-md-9  admin-content" id="logout">
-                        <div class="panel panel-info" style="margin: 1em;">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Confirm Logout</h3>
-                            </div>
-                            <div class="panel-body">
-                                Do you really want to logout ?  
-                                <a  href="#" class="label label-danger"
-                                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    <span >   Yes   </span>
-                                </a>    
-                                <a href="/account" class="label label-success"> <span >  No   </span></a>
-                            </div>
-                            <form id="logout-form" action="#" method="POST" style="display: none;">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="account-ln">Last Name</label>
+                                        <input class="form-control" type="text" id="account-ln" value="Adams" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="account-email">E-mail Address</label>
+                                        <input class="form-control" type="email" id="account-email" value="daniel.adams@example.com" disabled="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="account-phone">Phone Number</label>
+                                        <input class="form-control" type="text" id="account-phone" value="+7 (805) 348 95 72" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="account-pass">New Password</label>
+                                        <input class="form-control" type="password" id="account-pass">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="account-confirm-pass">Confirm Password</label>
+                                        <input class="form-control" type="password" id="account-confirm-pass">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <hr class="mt-2 mb-3">
+                                    <div class="d-flex flex-wrap justify-content-between align-items-center">
+                                        <div class="custom-control custom-checkbox d-block">
+                                            <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="">
+                                            <label class="custom-control-label" for="subscribe_me">Subscribe me to Newsletter</label>
+                                        </div>
+                                        <button class="btn btn-style-1 btn-primary" type="button" data-toast="" data-toast-position="topRight" data-toast-type="success" data-toast-icon="fe-icon-check-circle" data-toast-title="Success!" data-toast-message="Your profile updated successfuly.">Update Profile</button>
+                                    </div>
+                                </div>
                             </form>
-
-
-
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
 
     </div>
 </div>
 
 
+
 </body>
 </html>
-

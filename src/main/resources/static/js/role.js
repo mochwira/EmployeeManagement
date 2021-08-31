@@ -9,7 +9,7 @@ $(document).ready(function(){
             $.getJSON(href, function(response){
             //$('.myForm #kategoriId').val(response.kategoriId).hide(); ini aslinya
                 $('.myForm #roleId').val(response.roleId).hide();
-                $('.myForm #name').val(response.namaRole);
+                $('.myForm #name').val(response.name);
             });
             $('.myForm #roleModal').modal();
         } else {
