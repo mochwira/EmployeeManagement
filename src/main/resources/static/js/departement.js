@@ -9,14 +9,14 @@ $(document).ready(function(){
             $.getJSON(href, function(response){
             //$('.myForm #kategoriId').val(response.kategoriId).hide(); ini aslinya
                 $('.myForm #departementId').val(response.departementId).hide();
-                $('.myForm #namaDepartement').val(response.namaDepartement);
+                $('.myForm #departementName').val(response.departementName);
             });
             $('.myForm #departementModal').modal();
         } else {
 //         $('.myForm #kategoriId').val('0').hide(); ini aslinya
             $('.myForm #departementId').val('0').hide();
 
-            $('.myForm #namaDepartement').val('');
+            $('.myForm #departementName').val('');
             $('.myForm #departementModal').modal();
         }
 

@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -35,8 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Employees.findByEmployeeId", query = "SELECT e FROM Employees e WHERE e.employeeId = :employeeId"),
     @NamedQuery(name = "Employees.findByFirstName", query = "SELECT e FROM Employees e WHERE e.firstName = :firstName"),
     @NamedQuery(name = "Employees.findByLastName", query = "SELECT e FROM Employees e WHERE e.lastName = :lastName"),
-    @NamedQuery(name = "Employees.findByEmail", query = "SELECT e FROM Employees e WHERE e.email = :email"),
-    @NamedQuery(name = "Employees.findByDepartementId", query = "SELECT e FROM Employees e WHERE e.departementId = :departementId")})
+    @NamedQuery(name = "Employees.findByEmail", query = "SELECT e FROM Employees e WHERE e.email = :email")})
 public class Employees implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,17 +61,14 @@ public class Employees implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "email")
     private String email;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "departement_id")
-    private int departementId;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "employeeId", fetch = FetchType.LAZY)
     private Reports reports;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "employees", fetch = FetchType.LAZY)
-    private Departement departement;
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private User userId;
+    @JoinColumn(name = "departement_id", referencedColumnName = "departement_id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Departement departementId;
 
     public Employees() {
     }
@@ -80,12 +77,11 @@ public class Employees implements Serializable {
         this.employeeId = employeeId;
     }
 
-    public Employees(Integer employeeId, String firstName, String lastName, String email, int departementId) {
+    public Employees(Integer employeeId, String firstName, String lastName, String email) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.departementId = departementId;
     }
 
     public Integer getEmployeeId() {
@@ -120,14 +116,6 @@ public class Employees implements Serializable {
         this.email = email;
     }
 
-    public int getDepartementId() {
-        return departementId;
-    }
-
-    public void setDepartementId(int departementId) {
-        this.departementId = departementId;
-    }
-
     public Reports getReports() {
         return reports;
     }
@@ -136,20 +124,20 @@ public class Employees implements Serializable {
         this.reports = reports;
     }
 
-    public Departement getDepartement() {
-        return departement;
-    }
-
-    public void setDepartement(Departement departement) {
-        this.departement = departement;
-    }
-
     public User getUserId() {
         return userId;
     }
 
     public void setUserId(User userId) {
         this.userId = userId;
+    }
+
+    public Departement getDepartementId() {
+        return departementId;
+    }
+
+    public void setDepartementId(Departement departementId) {
+        this.departementId = departementId;
     }
 
     @Override

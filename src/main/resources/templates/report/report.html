@@ -38,15 +38,18 @@
 
         <div class="container">
             <div class="container">
-                <div>
-                <button class="btn btn-primary nBtn">New</button>
+                <div class="row">
+                    <div class="col">
+                    <button class="btn btn-primary nBtn">Create New Report</button>
+                    </div>
 
-                    <div class="container">
-                        <p>Download File Report</p>
-                        <a href="http://localhost:8082/reportfile" class="btn btn-primary" onclick="Swal.fire('Download Complete', 'Check Your Data ', 'success')">Download Excel File</a>
+                    <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+<!--                        <p>Download File Report</p>-->
+                        <a href="http://localhost:8082/reportfile" class="btn btn-success me-md-2" onclick="Swal.fire('Download Complete', 'Check Your Data ', 'success')">Download Excel File</a>
                     </div>
 
                 </div>
+                <hr>
                 <table class="table table-hover" id="reporttable">
                     <thead class="bg-dark text-white">
                     <tr>
@@ -58,17 +61,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="k : ${reports}">
-                        <td th:text="${r.reportId}"></td>
+                    <tr th:each="r : ${reports}">
+<!--                        <td th:text="${r.reportId}"></td>-->
                         <td th:text="${r.reportName}"></td>
-                        <td th:text="${r.kategoriId}"></td>
+                        <td th:text="${r.kategoriId.namaKategori}"></td>
                         <td th:text="${r.reportDetail}"></td>
                         <td th:text="${r.reportTime}"></td>
                         <td>
                             <a class="btn btn-primary text-white eBtn"
-                               th:href="@{http://localhost:8082/findreport/(reportId=${k.reportId})}">Edit</a>
+                               th:href="@{http://localhost:8082/findreport/(reportId=${r.reportId})}">Edit</a>
                             <!--                delete id kayanya jadi delete KategoriId-->
-                            <a class="btn btn-danger text-white rBtn" th:href="${'/delete?reportId='+k.reportId}">Remove</a>
+                            <a class="btn btn-danger text-white rBtn" th:href="${'/delete?reportId='+r.reportId}">Remove</a>
                         </td>
                     </tr>
                     </tbody>
@@ -104,28 +107,28 @@
                                         <td th:if="${#fields.hasErrors('reportName')}" th:errors="*{reportName}">Name Error</td>
                                     </div>
 
-                                    <label>Kategori<span class="redColor">*</span></label>
-                                    <select th:field="*{kategoriId}" class="form-control" required>
-                                        <option value="">Pilih</option>
-                                        <option
-                                                th:each="kategori : ${reports}"
-                                                th:value="${kategori.kategoriId}"
-                                                th:text="${kategori.namaKategori}">
-                                        </option>
-                                    </select>
+<!--                                    <label>Kategori<span class="redColor">*</span></label>-->
+<!--                                    <select th:field="*{kategoriId}" class="form-control" required>-->
+<!--                                        <option value="">Pilih</option>-->
+<!--                                        <option-->
+<!--                                                th:each="kategori : ${reports}"-->
+<!--                                                th:value="${kategori.kategoriId}"-->
+<!--                                                th:text="${kategori.namaKategori}">-->
+<!--                                        </option>-->
+<!--                                    </select>-->
 
                                     <div class="form-group">
-                                        <label for="detailReport" class=" label">Detail</label>
+                                        <label for="reportDetail" class=" label">Detail</label>
                                         <td>
-                                            <input type="text" class="form-control" id="detailReport" name="detailReport" value="" th:field="*{detailReport}">
+                                            <input type="text" class="form-control" id="reportDetail" name="reportDetail" value="" th:field="*{reportDetail}">
                                         </td>
-                                        <td th:if="${#fields.hasErrors('detailReport')}" th:errors="*{detailReport}">Detail Error</td>
+                                        <td th:if="${#fields.hasErrors('reportDetail')}" th:errors="*{reportDetail}">Detail Error</td>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="waktuReport" class=" label">Waktu</label>
+                                        <label for="reportTime" class=" label">Waktu</label>
                                         <td>
-                                            <input type="text" class="form-control" id="waktuReport" name="waktuReport" value="" th:field="*{waktuReport}">
+                                            <input type="text" class="form-control" id="reportTime" name="reportTime" value="" th:field="*{reportTime}">
                                         </td>
                                     </div>
 

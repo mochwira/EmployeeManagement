@@ -39,12 +39,17 @@
         <div class="container">
             <div class="container">
                 <div class="row">
-                <button class="btn btn-primary nBtn">New</button>
+                    <div class="col">
+                        <button class="btn btn-primary nBtn">Create New Project</button>
+                    </div>
 
-                    <div class="container">
-                    <a href="http://localhost:8082/projectfile" class="btn btn-primary" onclick="Swal.fire('Download Complete', 'Check Your Data ', 'success')">Download Excel File</a>
+                    <div class="col d-grid gap-2 d-md-flex justify-content-md-end">
+                        <!--                        <p>Download File Report</p>-->
+                        <a href="http://localhost:8082/projectfile" class="btn btn-success me-md-2" onclick="Swal.fire('Download Complete', 'Check Your Data ', 'success')">Download Project File</a>
+                    </div>
+
                 </div>
-                </div>
+                <hr>
 
                 <table class="table table-hover" id="projecttable">
                     <thead class="bg-dark text-white">
@@ -58,7 +63,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="k : ${projects}">
+                    <tr th:each="p : ${projects}">
                         <!--            <td th:text="${k.kategoriId}"></td>-->
                         <td th:text="${p.namaProject}"></td>
                         <td th:text="${p.keteranganProject}"></td>
@@ -98,11 +103,11 @@
                                     <input type="text" class="form-control" id="projectId" name="projectId" value="" th:field="*{projectId}">
 
                                     <div class="form-group">
-                                        <label for="reportName" class=" label">Nama Project</label>
+                                        <label for="namaProject" class=" label">Nama Project</label>
                                         <td>
-                                            <input type="text" class="form-control" id="reportName" name="reportName" value="" th:field="*{reportName}">
+                                            <input type="text" class="form-control" id="namaProject" name="namaProject" value="" th:field="*{namaProject}">
                                         </td>
-                                        <td th:if="${#fields.hasErrors('namaKategori')}" th:errors="*{namaKategori}">Name Error</td>
+                                        <td th:if="${#fields.hasErrors('namaProject')}" th:errors="*{namaProject}">Name Error</td>
                                     </div>
 
                                     <div class="form-group">

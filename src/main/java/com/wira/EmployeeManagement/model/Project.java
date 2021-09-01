@@ -8,13 +8,13 @@ package com.wira.EmployeeManagement.model;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -67,8 +67,7 @@ public class Project implements Serializable {
     @Column(name = "durasi_project")
     @Temporal(TemporalType.DATE)
     private Date durasiProject;
-    @JoinColumn(name = "project_id", referencedColumnName = "project_id", insertable = false, updatable = false)
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "projectId", fetch = FetchType.LAZY)
     private Reports reports;
 
     public Project() {

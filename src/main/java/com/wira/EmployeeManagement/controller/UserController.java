@@ -24,7 +24,7 @@ public class UserController {
     @GetMapping("/user")
     public String createIndex(Model model, @RequestParam(defaultValue = "0", name = "page") int page) {
         //model.addAttribute("kategoris", kategoriRepositoryJpa.findAll(new PageRequest(page, 4)));
-        model.addAttribute("reports", userRepository.findAll(PageRequest.of(page, 8)));
+        model.addAttribute("users", userRepository.findAll(PageRequest.of(page, 8)));
         model.addAttribute("buatPageUser", page);
         model.addAttribute ( "buatUser", new User());
         return "/user/user.html";

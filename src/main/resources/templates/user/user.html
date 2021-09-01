@@ -56,9 +56,8 @@
           </tr>
           </thead>
           <tbody>
-          <tr th:each="r : ${users}">
+          <tr th:each="u : ${users}">
             <!--              <td th:text="${r.roleId}"></td>-->
-            <td th:text="${u.name}"></td>
             <td th:text="${u.firstName}"></td>
             <td th:text="${u.lastName}"></td>
             <td th:text="${u.email}"></td>
@@ -111,20 +110,20 @@
                     <label for="password" class=" label">Password</label>
                     <input type="text" class="form-control" id="password" name="password" value="" th:field="*{password}">
                   </div>
-                  <label>Role<span class="redColor">*</span></label>
-                  <select th:field="*{userId}" class="form-control" required>
-                    <option value="">Pilih</option>
-                    <option
-                            th:each="role : ${users}"
-                            th:value="${role.roleId}"
-                            th:text="${role.namaRole}">
-                    </option>
-                  </select>
+<!--                  <label>Role<span class="redColor">*</span></label>-->
+<!--                  <select th:field="*{roleId}" class="form-control" required>-->
+<!--                    <option value="">Pilih</option>-->
+<!--                    <option-->
+<!--                            th:each="u : ${users}"-->
+<!--                            th:value="${u.roleId}"-->
+<!--                            th:text="${u.name}">-->
+<!--                    </option>-->
+<!--                  </select>-->
 
-                  <div class="mb-3">
-                    <label for="formFileSm" class="form-label">Upload Foto</label>
-                    <input class="form-control form-control-sm" id="formFileSm" type="file">
-                  </div>
+<!--                  <div class="mb-3">-->
+<!--                    <label for="formFileSm" class="form-label">Upload Foto</label>-->
+<!--                    <input class="form-control form-control-sm" id="formFileSm" type="file">-->
+<!--                  </div>-->
 
                 </div>
                 <div class="modal-footer">

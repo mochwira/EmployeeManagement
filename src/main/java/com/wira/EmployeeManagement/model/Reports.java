@@ -8,7 +8,6 @@ package com.wira.EmployeeManagement.model;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -38,8 +37,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Reports.findByReportId", query = "SELECT r FROM Reports r WHERE r.reportId = :reportId"),
     @NamedQuery(name = "Reports.findByReportName", query = "SELECT r FROM Reports r WHERE r.reportName = :reportName"),
     @NamedQuery(name = "Reports.findByReportDetail", query = "SELECT r FROM Reports r WHERE r.reportDetail = :reportDetail"),
-    @NamedQuery(name = "Reports.findByReportTime", query = "SELECT r FROM Reports r WHERE r.reportTime = :reportTime"),
-    @NamedQuery(name = "Reports.findByProjectId", query = "SELECT r FROM Reports r WHERE r.projectId = :projectId")})
+    @NamedQuery(name = "Reports.findByReportTime", query = "SELECT r FROM Reports r WHERE r.reportTime = :reportTime")})
 public class Reports implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,18 +59,15 @@ public class Reports implements Serializable {
     @Column(name = "report_time")
     @Temporal(TemporalType.DATE)
     private Date reportTime;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "project_id")
-    private long projectId;
-    @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
-    private Employees employeeId;
     @JoinColumn(name = "kategori_id", referencedColumnName = "kategori_id")
     @OneToOne(optional = false, fetch = FetchType.LAZY)
     private Kategori kategoriId;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "reports", fetch = FetchType.LAZY)
-    private Project project;
+    @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    private Employees employeeId;
+    @JoinColumn(name = "project_id", referencedColumnName = "project_id")
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    private Project projectId;
 
     public Reports() {
     }
@@ -81,11 +76,10 @@ public class Reports implements Serializable {
         this.reportId = reportId;
     }
 
-    public Reports(Long reportId, String reportName, String reportDetail, long projectId) {
+    public Reports(Long reportId, String reportName, String reportDetail) {
         this.reportId = reportId;
         this.reportName = reportName;
         this.reportDetail = reportDetail;
-        this.projectId = projectId;
     }
 
     public Long getReportId() {
@@ -120,12 +114,12 @@ public class Reports implements Serializable {
         this.reportTime = reportTime;
     }
 
-    public long getProjectId() {
-        return projectId;
+    public Kategori getKategoriId() {
+        return kategoriId;
     }
 
-    public void setProjectId(long projectId) {
-        this.projectId = projectId;
+    public void setKategoriId(Kategori kategoriId) {
+        this.kategoriId = kategoriId;
     }
 
     public Employees getEmployeeId() {
@@ -136,20 +130,12 @@ public class Reports implements Serializable {
         this.employeeId = employeeId;
     }
 
-    public Kategori getKategoriId() {
-        return kategoriId;
+    public Project getProjectId() {
+        return projectId;
     }
 
-    public void setKategoriId(Kategori kategoriId) {
-        this.kategoriId = kategoriId;
-    }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
+    public void setProjectId(Project projectId) {
+        this.projectId = projectId;
     }
 
     @Override

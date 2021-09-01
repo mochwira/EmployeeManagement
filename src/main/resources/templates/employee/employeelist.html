@@ -42,18 +42,20 @@
         <table class="table table-hover" id="employeetable">
           <thead class="bg-dark text-white">
           <tr>
-
+            <td>User</td>
             <td>Nama Depan</td>
             <td>Nama Belakang</td>
             <td>Email</td>
+            <td>Departement</td>
             <td>Action</td>
           </tr>
           </thead>
           <tbody>
-          <tr th:each="k : ${employees}">
-
+          <tr th:each="e : ${employeel}">
+            <td th:text="${e.userId.firstName}"></td>
             <td th:text="${e.firstName}"></td>
-            <td th:text="${e.Lastname}"></td>
+            <td th:text="${e.lastName}"></td>
+            <td th:text="${e.departementId.departementName}"></td>
             <td th:text="${e.email}"></td>
             <td>
               <a class="btn btn-primary text-white eBtn"
@@ -65,7 +67,7 @@
           </tbody>
         </table>
         <ul class="nav nav-pills">
-          <li class="nav-item" th:each="i : ${#numbers.sequence(0, employees.totalPages-1)}">
+          <li class="nav-item" th:each="i : ${#numbers.sequence(0, employeel.totalPages-1)}">
             <a th:href="${'?page='+i}" th:text="${i}" class="nav-link"
                th:classappend="${buatPageEmployee}==${i}?'active':''"></a>
           </li>

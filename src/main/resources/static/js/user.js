@@ -12,6 +12,7 @@ $(document).ready(function(){
                 $('.myForm #firstName').val(response.firstName);
                 $('.myForm #lastName').val(response.lastName);
                 $('.myForm #email').val(response.email);
+                $('.myForm #roleId').val(response.email);
                 $('.myForm #password').val(response.password);
             });
             $('.myForm #userModal').modal();
@@ -20,6 +21,7 @@ $(document).ready(function(){
             $('.myForm #userId').val('0').hide();
             $('.myForm #firstName').val('');
             $('.myForm #lastName').val('');
+            $('.myForm #roleId').val('');
             $('.myForm #email').val('');
             $('.myForm #password').val('');
             $('.myForm #userModal').modal();

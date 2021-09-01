@@ -6,6 +6,7 @@
 package com.wira.EmployeeManagement.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,11 +19,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -67,8 +69,8 @@ public class User implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "password")
     private String password;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "userId", fetch = FetchType.LAZY)
-    private Employees employees;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId", fetch = FetchType.LAZY)
+    private List<Employees> employeesList;
     @JoinColumn(name = "role_id", referencedColumnName = "role_id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Role roleId;
@@ -128,12 +130,13 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Employees getEmployees() {
-        return employees;
+    @XmlTransient
+    public List<Employees> getEmployeesList() {
+        return employeesList;
     }
 
-    public void setEmployees(Employees employees) {
-        this.employees = employees;
+    public void setEmployeesList(List<Employees> employeesList) {
+        this.employeesList = employeesList;
     }
 
     public Role getRoleId() {

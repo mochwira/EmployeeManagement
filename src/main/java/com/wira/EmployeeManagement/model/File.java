@@ -93,16 +93,12 @@ public class File implements Serializable {
         this.description = description;
     }
 
-    public boolean getPublished() {
-        return published;
-    }
-
     public boolean isPublished() {
         return published;
     }
 
-    public void setPublished(boolean isPublished) {
-        this.published = isPublished;
+    public void setPublished(boolean published) {
+        this.published = published;
     }
 
     @Override
