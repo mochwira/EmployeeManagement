@@ -57,7 +57,7 @@ public class ReportFileImpl implements ReportFileService {
                 Row dataRow = sheet.createRow(i + 1);
                 dataRow.createCell(0).setCellValue(reports.get(i).getReportId());
                 dataRow.createCell(1).setCellValue(reports.get(i).getReportName());
-                dataRow.createCell(2).setCellValue((RichTextString) reports.get(i).getKategoriId());
+                dataRow.createCell(2).setCellValue(reports.get(i).getKategoriId().getNamaKategori());
                 dataRow.createCell(3).setCellValue(reports.get(i).getReportDetail());
                 dataRow.createCell(4).setCellValue(reports.get(i).getReportTime());
             }

@@ -71,7 +71,7 @@ public class Role implements Serializable {
         this.roleId = roleId;
     }
 
-    public @NotNull @Size(min = 1, max = 20) String getName() {
+    public String getName() {
         return name;
     }
 

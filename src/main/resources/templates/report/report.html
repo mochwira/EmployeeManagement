@@ -7,6 +7,12 @@
     <!-- Image -->
     <link rel="icon" th:href="@{/img/menu.png}"/>
 
+    <!--    Date Format-->
+    <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.css}"/>
+    <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css}"/>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{webjars/font-awesome/5.11.2/css/all.css} "/>
+
 
     <!--Online-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -53,20 +59,24 @@
                 <table class="table table-hover" id="reporttable">
                     <thead class="bg-dark text-white">
                     <tr>
-                        <td>Nama Report</td>
+                        <td>Nama Employee</td>
+                        <td>Judul Report</td>
                         <td>Kategori Report</td>
                         <td>Detail Report</td>
                         <td>Waktu Report</td>
+                        <td>Nama Proyek</td>
                         <td>Action</td>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="r : ${reports}">
 <!--                        <td th:text="${r.reportId}"></td>-->
+                        <td th:text="${r.employeeId.firstName}"></td>
                         <td th:text="${r.reportName}"></td>
                         <td th:text="${r.kategoriId.namaKategori}"></td>
                         <td th:text="${r.reportDetail}"></td>
                         <td th:text="${r.reportTime}"></td>
+                        <td th:text="${r.projectId.namaProject}"></td>
                         <td>
                             <a class="btn btn-primary text-white eBtn"
                                th:href="@{http://localhost:8082/findreport/(reportId=${r.reportId})}">Edit</a>
@@ -99,6 +109,8 @@
                                 </div>
                                 <div class="modal-body">
                                     <input type="text" class="form-control" id="reportId" name="reportId" value="" th:field="*{reportId}">
+                                    <input type="text" class="form-control" id="employeeId" name="employeeId" value="" th:field="*{employeeId}">
+                                    <input type="text" class="form-control" id="projectId" name="projectId" value="" th:field="*{projectId}">
                                     <div class="form-group">
                                         <label for="reportName" class=" label">Nama Report</label>
                                         <td>
@@ -108,14 +120,25 @@
                                     </div>
 
 <!--                                    <label>Kategori<span class="redColor">*</span></label>-->
-<!--                                    <select th:field="*{kategoriId}" class="form-control" required>-->
+<!--                                    <select name="kat" id="kat" class="form-control" required>-->
+<!--                                        <select th:field="*{kategoriId}" class="form-control" required>-->
 <!--                                        <option value="">Pilih</option>-->
 <!--                                        <option-->
-<!--                                                th:each="kategori : ${reports}"-->
-<!--                                                th:value="${kategori.kategoriId}"-->
-<!--                                                th:text="${kategori.namaKategori}">-->
+<!--                                                th:each="r : ${reports}"-->
+<!--                                                th:text="${r.kategoriId}"-->
+<!--                                                th:value="${r.namaKategori}"-->
+<!--                                        >-->
 <!--                                        </option>-->
 <!--                                    </select>-->
+
+
+                                    <label for="reportTime">Waktu</label>
+                                    <div class="input-group date">
+                                        <input type="text" class="form-control" id="reportTime" autocomplete="off" th:field="*{reportTime}"/>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                        </div>
+                                    </div>
 
                                     <div class="form-group">
                                         <label for="reportDetail" class=" label">Detail</label>
@@ -125,12 +148,12 @@
                                         <td th:if="${#fields.hasErrors('reportDetail')}" th:errors="*{reportDetail}">Detail Error</td>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="reportTime" class=" label">Waktu</label>
-                                        <td>
-                                            <input type="text" class="form-control" id="reportTime" name="reportTime" value="" th:field="*{reportTime}">
-                                        </td>
-                                    </div>
+<!--                                    <div class="form-group">-->
+<!--                                        <label for="reportTime" class=" label">Waktu</label>-->
+<!--                                        <td>-->
+<!--                                            <input type="text" class="form-control" id="reportTime" name="reportTime" value="" th:field="*{reportTime}">-->
+<!--                                        </td>-->
+<!--                                    </div>-->
 
                                     <div class="mb-3">
                                         <label for="formFileMultiple" class="form-label">Upload File Report</label>
@@ -182,6 +205,11 @@
     $('#reporttable').DataTable();
 } );
 </script>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{assets/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script>
 
 </body>
 </html>

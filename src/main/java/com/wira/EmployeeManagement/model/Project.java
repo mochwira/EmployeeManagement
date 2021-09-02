@@ -5,6 +5,8 @@
  */
 package com.wira.EmployeeManagement.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -32,6 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "project")
 @XmlRootElement
+
 @NamedQueries({
     @NamedQuery(name = "Project.findAll", query = "SELECT p FROM Project p"),
     @NamedQuery(name = "Project.findByProjectId", query = "SELECT p FROM Project p WHERE p.projectId = :projectId"),
@@ -66,9 +69,11 @@ public class Project implements Serializable {
     @NotNull
     @Column(name = "durasi_project")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date durasiProject;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "projectId", fetch = FetchType.LAZY)
     private Reports reports;
+
 
     public Project() {
     }

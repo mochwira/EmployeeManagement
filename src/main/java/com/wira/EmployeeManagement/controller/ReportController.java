@@ -2,6 +2,7 @@ package com.wira.EmployeeManagement.controller;
 
 import com.wira.EmployeeManagement.model.Reports;
 
+import com.wira.EmployeeManagement.repository.KategoriRepository;
 import com.wira.EmployeeManagement.repository.ReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -20,12 +21,17 @@ public class ReportController {
     @Autowired
     private ReportRepository reportRepository;
 
+    @Autowired
+    private KategoriRepository kategoriRepository;
+
+
     @GetMapping("/report")
     public String createIndex(Model model, @RequestParam(defaultValue = "0", name = "page") int page) {
 
         model.addAttribute("reports", reportRepository.findAll(PageRequest.of(page, 8)));
         model.addAttribute("buatPageReport", page);
         model.addAttribute ( "buatReport", new Reports());
+//        model.addAttribute("kategoris", kategoriRepository.findAll());
         return "/report/report.html";
     }
 

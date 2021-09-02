@@ -5,6 +5,8 @@
  */
 package com.wira.EmployeeManagement.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -58,6 +60,7 @@ public class Reports implements Serializable {
     private String reportDetail;
     @Column(name = "report_time")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date reportTime;
     @JoinColumn(name = "kategori_id", referencedColumnName = "kategori_id")
     @OneToOne(optional = false, fetch = FetchType.LAZY)
