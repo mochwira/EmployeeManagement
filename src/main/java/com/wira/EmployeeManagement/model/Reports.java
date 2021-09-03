@@ -60,7 +60,8 @@ public class Reports implements Serializable {
     private String reportDetail;
     @Column(name = "report_time")
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    //@DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy h:mm a")
     private Date reportTime;
     @JoinColumn(name = "kategori_id", referencedColumnName = "kategori_id")
     @OneToOne(optional = false, fetch = FetchType.LAZY)

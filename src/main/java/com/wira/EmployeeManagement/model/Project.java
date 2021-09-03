@@ -69,7 +69,8 @@ public class Project implements Serializable {
     @NotNull
     @Column(name = "durasi_project")
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+//    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy h:mm a")
     private Date durasiProject;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "projectId", fetch = FetchType.LAZY)
     private Reports reports;

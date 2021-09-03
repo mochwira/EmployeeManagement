@@ -7,7 +7,7 @@
     <!-- Image -->
     <link rel="icon" th:href="@{/img/menu.png}"/>
 
-<!--    Date Format-->
+    <!--    Date Format-->
     <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.css}"/>
     <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css}"/>
     <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
@@ -34,6 +34,18 @@
 
     <link rel="stylesheet" th:href="@{/css/stylesidebar.css}"/>
     <script th:src="@{/js/project.js}"></script>
+
+<!--    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>-->
+<!--    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>-->
+<!--    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>-->
+    <script th:src="@{assets/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script>
+
+    <script>
+    $(document).ready( function () {
+    $('#projecttable').DataTable();
+    } );
+    </script>
+
 </head>
 <body>
 <div class="wrapper">
@@ -182,18 +194,6 @@
     </div>
 </div>
 
-
-<script>
-    $(document).ready( function () {
-    $('#projecttable').DataTable();
-} );
-</script>
-
-
-<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-<script th:src="@{assets/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script>
 
 </body>
 </html>
