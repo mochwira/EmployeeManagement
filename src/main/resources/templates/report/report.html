@@ -8,10 +8,11 @@
     <link rel="icon" th:href="@{/img/menu.png}"/>
 
     <!--    Date Format-->
-    <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.css}"/>
-    <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css}"/>
-    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
-    <link th:rel="stylesheet" th:href="@{webjars/font-awesome/5.11.2/css/all.css} "/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/assets/moment/moment.min.js}"></script>
+    <script th:src="@{/assets/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.js}"></script>
 
 
     <!--Online-->
@@ -35,10 +36,6 @@
     <link rel="stylesheet" th:href="@{/css/stylesidebar.css}"/>
     <script th:src="@{/js/report.js}"></script>
 
-<!--    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>-->
-<!--    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>-->
-<!--    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>-->
-    <script th:src="@{assets/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -113,9 +110,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <input type="text" class="form-control" id="reportId" name="reportId" value="" th:field="*{reportId}">
-                                    <input type="text" class="form-control" id="employeeId" name="employeeId" value="" th:field="*{employeeId}">
-                                    <input type="text" class="form-control" id="projectId" name="projectId" value="" th:field="*{projectId}">
+
                                     <div class="form-group">
                                         <label for="reportName" class=" label">Nama Report</label>
                                         <td>
@@ -137,13 +132,18 @@
 <!--                                    </select>-->
 
 
-                                    <label for="reportTime">Waktu</label>
-                                    <div class="input-group date">
-                                        <input type="text" class="form-control" id="reportTime" autocomplete="off" th:field="*{reportTime}"/>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+
+                                    <div class="form-group">
+                                        <label for="date">Waktu</label>
+                                        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                                            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"
+                                                   th:field="*{reportTime}" id="date" placeholder="Date"/>
+                                            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+                                            </div>
                                         </div>
                                     </div>
+
 
                                     <div class="form-group">
                                         <label for="reportDetail" class=" label">Detail</label>
@@ -211,7 +211,24 @@
 } );
 </script>
 
+<script>
+    $.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
+        icons: {
+            time: 'far fa-clock',
+            date: 'far fa-calendar',
+            up: 'fas fa-arrow-up',
+            down: 'fas fa-arrow-down',
+            previous: 'fas fa-chevron-left',
+            next: 'fas fa-chevron-right',
+            today: 'far fa-calendar-check-o',
+            clear: 'far fa-trash',
+            close: 'far fa-times'
+        } });
 
+    $('#datetimepicker1').datetimepicker({
+        format: 'DD/MM/YYYY h:mm A'
+    });
+</script>
 
 </body>
 </html>

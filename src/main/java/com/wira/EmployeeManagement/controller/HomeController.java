@@ -1,10 +1,7 @@
 package com.wira.EmployeeManagement.controller;
 
 import com.wira.EmployeeManagement.model.Kategori;
-import com.wira.EmployeeManagement.repository.DepartementRepository;
-import com.wira.EmployeeManagement.repository.KategoriRepository;
-import com.wira.EmployeeManagement.repository.RoleRepository;
-import com.wira.EmployeeManagement.repository.UserRepository;
+import com.wira.EmployeeManagement.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -28,6 +25,9 @@ public class HomeController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private ProjectRepository projectRepository;
+
 //    @GetMapping("/home")
 //    public String getHome(Model model) {
 //
@@ -45,6 +45,7 @@ public class HomeController {
         model.addAttribute("departements", departementRepository.findAll(PageRequest.of(page, 8)));
         model.addAttribute("rolers", roleRepository.findAll());
         model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("projects", projectRepository.findAll());
 
         return "home/home.html";
     }

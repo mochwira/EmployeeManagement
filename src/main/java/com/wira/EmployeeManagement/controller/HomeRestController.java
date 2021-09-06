@@ -1,15 +1,9 @@
 package com.wira.EmployeeManagement.controller;
 
 
-import com.wira.EmployeeManagement.model.Departement;
-import com.wira.EmployeeManagement.model.Kategori;
+import com.wira.EmployeeManagement.model.*;
 
-import com.wira.EmployeeManagement.model.Role;
-import com.wira.EmployeeManagement.model.User;
-import com.wira.EmployeeManagement.repository.DepartementRepository;
-import com.wira.EmployeeManagement.repository.KategoriRepository;
-import com.wira.EmployeeManagement.repository.RoleRepository;
-import com.wira.EmployeeManagement.repository.UserRepository;
+import com.wira.EmployeeManagement.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,6 +22,9 @@ public class HomeRestController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ProjectRepository projectRepository;
 
     @GetMapping("/findhome")
     public Kategori createFindOne(@RequestParam("kategoriId") Integer kategoriId) {
@@ -77,5 +74,19 @@ public class HomeRestController {
         us.setEmail(usr.getEmail());
 
         return us;
+    }
+
+    @GetMapping("/findprojects")
+    public Project createFindProject(@RequestParam("projectId") Long projectId) {
+        Project po = new Project();
+        Project pjr =  projectRepository.getOne(projectId);
+
+        //init
+        po.setNamaProject(pjr.getNamaProject());
+        po.setKeteranganProject(pjr.getKeteranganProject());
+        po.setAsalProject(pjr.getAsalProject());
+        po.setDurasiProject(pjr.getDurasiProject());
+
+        return po;
     }
 }

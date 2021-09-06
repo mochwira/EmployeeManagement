@@ -20,6 +20,8 @@
           integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
           crossorigin="anonymous"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
 
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
@@ -53,6 +55,12 @@
 } );
 </script>
 
+<script>
+    $(document).ready( function () {
+    $('#projecttable').DataTable();
+} );
+</script>
+
 <div class="wrapper">
   <!-- Sidebar  -->
   <div th:insert="fragment/sidebar.html :: sidebar"></div>
@@ -77,7 +85,90 @@
           </div>
         </div>
 
+<!--        Start Bar Chart-->
+        <br>
+        <h2 class="fs-2 fw-bold">User Daily Access</h2>
+        <canvas id="myChart" width="400" height="200"></canvas>
+
+        <script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+        <!--        End Chart-->
+
+        <!--        Start Vertical Chart-->
+        <br>
+        <h2 class="fs-2 fw-bold">Project Daily Input</h2>
+        <canvas id="myVerticalChart" width="400" height="200"></canvas>
+
+        <!--        End Vertical Chart-->
+
+
+        <br>
+        <!--        Start section Project-->
+        <h2 class="fs-2 fw-bold">Project</h2>
+        <div class="container">
+          <table class="table table-hover" id="projecttable">
+            <thead class="bg-dark text-white">
+            <tr>
+              <!--            <td>ID Project</td>-->
+              <td>Nama Project</td>
+              <td>Keterangan </td>
+              <td>Asal</td>
+              <td>Deadline</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="po : ${projects}">
+              <!--            <td th:text="${k.kategoriId}"></td>-->
+             <td th:text="${po.namaProject}" th:href="@{http://localhost:8082/findprojects/(projectId=${po.projectId})}"></td>
+              <td th:text="${po.keteranganProject}" th:href="@{http://localhost:8082/findprojects/(projectId=${po.projectId})}"></td>
+              <td th:text="${po.asalProject}" th:href="@{http://localhost:8082/findprojects/(projectId=${po.projectId})}"></td>
+              <td th:text="${po.durasiProject}" th:href="@{http://localhost:8082/findprojects/(projectId=${po.projectId})}"></td>
+
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <!--        End section Project-->
+
 <!--        Start section kategori-->
+        <br>
         <h2 class="fs-2 fw-bold">Kategori</h2>
         <div class="container">
           <table class="table table-hover" id="kategoritable">
@@ -100,6 +191,7 @@
         <!--        End section kategori-->
 
         <!--        Start section Departement-->
+        <br>
         <h2 class="fs-2 fw-bold">Departement</h2>
         <div class="container">
           <table class="table table-hover" id="departementtable">
@@ -122,6 +214,7 @@
         <!--        End section Departement-->
 
         <!--        Start section Role-->
+        <br>
         <h2 class="fs-2 fw-bold">Role</h2>
         <div class="container">
           <table class="table table-hover" id="rolertable">
@@ -144,6 +237,7 @@
         <!--        End section Role-->
 
         <!--        Start section User-->
+        <br>
         <h2 class="fs-2 fw-bold">User</h2>
         <div class="container">
           <table class="table table-hover" id="userstable">
@@ -174,8 +268,6 @@
 
   </div>
 </div>
-
-
 
 
 </div>
