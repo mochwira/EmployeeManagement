@@ -112,6 +112,14 @@
                                 <div class="modal-body">
 
                                     <div class="form-group">
+                                        <label for="employeeId" class=" label">Nama Employee</label>
+                                        <td>
+                                            <input type="text" class="form-control" id="employeeId" name="employeeId" value="" th:field="*{employeeId.firstName}">
+                                        </td>
+                                        <td th:if="${#fields.hasErrors('employeeId')}" th:errors="*{employeeId}">Name Error</td>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="reportName" class=" label">Nama Report</label>
                                         <td>
                                             <input type="text" class="form-control" id="reportName" name="reportName" value="" th:field="*{reportName}">
@@ -119,18 +127,15 @@
                                         <td th:if="${#fields.hasErrors('reportName')}" th:errors="*{reportName}">Name Error</td>
                                     </div>
 
-<!--                                    <label>Kategori<span class="redColor">*</span></label>-->
-<!--                                    <select name="kat" id="kat" class="form-control" required>-->
-<!--                                        <select th:field="*{kategoriId}" class="form-control" required>-->
-<!--                                        <option value="">Pilih</option>-->
-<!--                                        <option-->
-<!--                                                th:each="r : ${reports}"-->
-<!--                                                th:text="${r.kategoriId}"-->
-<!--                                                th:value="${r.namaKategori}"-->
-<!--                                        >-->
-<!--                                        </option>-->
-<!--                                    </select>-->
-
+                                    <label>Kategori<span class="redColor">*</span></label>
+                                    <select th:field="*{kategoriId}" class="form-control" required>
+                                        <option value="">Pilih</option>
+                                        <option
+                                                th:each="r : ${reports}"
+                                                th:value="${r.kategoriId}"
+                                                th:text="${r.kategoriId.namaKategori}">
+                                        </option>
+                                    </select>
 
 
                                     <div class="form-group">
@@ -160,10 +165,10 @@
 <!--                                        </td>-->
 <!--                                    </div>-->
 
-                                    <div class="mb-3">
-                                        <label for="formFileMultiple" class="form-label">Upload File Report</label>
-                                        <input class="form-control" type="file" id="formFileMultiple" multiple>
-                                    </div>
+<!--                                    <div class="mb-3">-->
+<!--                                        <label for="formFileMultiple" class="form-label">Upload File Report</label>-->
+<!--                                        <input class="form-control" type="file" id="formFileMultiple" multiple>-->
+<!--                                    </div>-->
 
                                 </div>
                                 <div class="modal-footer">

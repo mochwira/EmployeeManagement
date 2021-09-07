@@ -17,20 +17,20 @@ public class ReportRestController {
     private ReportRepository reportRepository;
 
     @Autowired
-    private KategoriRepository kategoriRepository;
+    public KategoriRepository kategoriRepository;
 
     @GetMapping("/findreport")
-    public Reports createFindOne(@RequestParam("reportId") Long reportId) {
+    public Reports createFindOne(@RequestParam("reportId") Long reportId, Integer kategoriId) {
         Reports r = new Reports();
-//        Kategori k = new Kategori();
+
         Reports rp = reportRepository.getOne(reportId);
-//        Kategori kat = kategoriRepository.getOne(KategoriId);
+
 
         //init
         r.getReportId();
         r.setReportName(rp.getReportName());
         r.setKategoriId(rp.getKategoriId());
-//        k.setNamaKategori(kat.getNamaKategori());
+        r.setKategoriId(rp.getKategoriId());
         r.setEmployeeId(rp.getEmployeeId());
         r.setProjectId(rp.getProjectId());
         r.setReportDetail(rp.getReportDetail());

@@ -89,6 +89,17 @@
                 </div>
                 <div class="modal-body">
                   <input type="text" class="form-control" id="employeeId" name="employeeId" value="" th:field="*{employeeId}">
+
+                  <label>Departement<span class="redColor">*</span></label>
+                  <select th:field="*{departementId}" class="form-control" required>
+                    <option value="">Pilih</option>
+                    <option
+                            th:each="e : ${employeel}"
+                            th:value="${e.departementId}"
+                            th:text="${e.departementId.departementName}">
+                    </option>
+                  </select>
+
                   <div class="form-group">
                     <label for="firstName" class=" label">Nama Depan</label>
                     <td>

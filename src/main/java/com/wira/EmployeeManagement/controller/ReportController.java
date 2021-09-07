@@ -1,5 +1,6 @@
 package com.wira.EmployeeManagement.controller;
 
+import com.wira.EmployeeManagement.model.Kategori;
 import com.wira.EmployeeManagement.model.Reports;
 
 import com.wira.EmployeeManagement.repository.KategoriRepository;
@@ -22,7 +23,7 @@ public class ReportController {
     private ReportRepository reportRepository;
 
     @Autowired
-    private KategoriRepository kategoriRepository;
+    public KategoriRepository kategoriRepository;
 
 
     @GetMapping("/report")
@@ -31,24 +32,26 @@ public class ReportController {
         model.addAttribute("reports", reportRepository.findAll(PageRequest.of(page, 8)));
         model.addAttribute("buatPageReport", page);
         model.addAttribute ( "buatReport", new Reports());
-//        model.addAttribute("kategoris", kategoriRepository.findAll());
+        model.addAttribute("kategoris", kategoriRepository.findAll());
         return "/report/report.html";
     }
 
     @PostMapping("/savereport")
-    public String save(@Valid Reports reports, BindingResult bindingResult) {
+    public String save(@Valid Reports reports, Kategori kategori, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
             return "redirect:/report";
         }
 
         reportRepository.save(reports);
+        kategoriRepository.save(kategori);
 
         return "redirect:/report";
     }
 
     @GetMapping("/deletereport")
-    public String deleteReport(@RequestParam("reportId") long reportId) {
+    public String deleteReport(@RequestParam("reportId") Long reportId, Integer kategoriId) {
         reportRepository.deleteById(reportId);
+        kategoriRepository.deleteById(kategoriId);
 
         return "redirect:/report";
     }

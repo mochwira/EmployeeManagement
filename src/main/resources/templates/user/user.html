@@ -110,15 +110,17 @@
                     <label for="password" class=" label">Password</label>
                     <input type="text" class="form-control" id="password" name="password" value="" th:field="*{password}">
                   </div>
-<!--                  <label>Role<span class="redColor">*</span></label>-->
-<!--                  <select th:field="*{roleId}" class="form-control" required>-->
-<!--                    <option value="">Pilih</option>-->
-<!--                    <option-->
-<!--                            th:each="u : ${users}"-->
-<!--                            th:value="${u.roleId}"-->
-<!--                            th:text="${u.name}">-->
-<!--                    </option>-->
-<!--                  </select>-->
+
+
+                  <label>Role<span class="redColor">*</span></label>
+                  <select th:field="*{roleId}" class="form-control" required>
+                    <option value="">Pilih</option>
+                    <option
+                            th:each="u : ${users}"
+                            th:value="${u.roleId}"
+                            th:text="${u.roleId.name}">
+                    </option>
+                  </select>
 
 <!--                  <div class="mb-3">-->
 <!--                    <label for="formFileSm" class="form-label">Upload Foto</label>-->

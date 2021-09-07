@@ -1,6 +1,7 @@
 package com.wira.EmployeeManagement.controller;
 
 import com.wira.EmployeeManagement.model.User;
+import com.wira.EmployeeManagement.repository.RoleRepository;
 import com.wira.EmployeeManagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +14,11 @@ public class UserRestController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    public RoleRepository roleRepository;
+
     @GetMapping("/finduser")
-    public User createFindOne(@RequestParam("userId") Long userId) {
+    public User createFindOne(@RequestParam("userId") Long userId, Long roleId) {
         User u = new User();
          User up = userRepository.getOne(userId);
 
