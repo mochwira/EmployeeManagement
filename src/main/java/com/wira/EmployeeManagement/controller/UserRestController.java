@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 @RestController
 public class UserRestController {
 
@@ -18,9 +20,14 @@ public class UserRestController {
     public RoleRepository roleRepository;
 
     @GetMapping("/finduser")
-    public User createFindOne(@RequestParam("userId") Long userId, Long roleId) {
+    public User createFindOne(@RequestParam("userId") Long userId,
+                              @RequestParam("roleId") Long roleId,
+                              @RequestParam("firstName") String firstName,
+                              @RequestParam("firstName") String lastName,
+                              @RequestParam("firstName") String email,
+                              @RequestParam("firstName") String password) {
         User u = new User();
-         User up = userRepository.getOne(userId);
+        User up = userRepository.getOne(userId);
 
         //init
         u.getUserId();

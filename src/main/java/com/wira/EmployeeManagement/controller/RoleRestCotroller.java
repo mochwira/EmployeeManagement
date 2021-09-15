@@ -13,7 +13,8 @@ public class RoleRestCotroller {
     private RoleRepository roleRepository;
 
     @GetMapping("/findrole")
-    public Role createFindOne(@RequestParam("roleId") Long roleId) {
+    public Role createFindOne(@RequestParam("roleId") Long roleId,
+                              @RequestParam("name") String name) {
         Role r = new Role();
         Role rl = roleRepository.getOne(Long.valueOf(roleId));
 

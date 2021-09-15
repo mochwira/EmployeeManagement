@@ -20,26 +20,24 @@ public class EmployeeRestController {
     public DepartementRepository departementRepository;
 
     @GetMapping("/findemployee")
-    public Employees createFindOne(@RequestParam("employeeId") Integer employeeId, Integer departementId) {
+    public Employees createFindOne(@RequestParam("employeeId") Integer employeeId,
+                                   @RequestParam("departementId") Integer departementId,
+                                   @RequestParam("userId") Integer userId,
+                                   @RequestParam("firstName") Integer firstName,
+                                   @RequestParam("lastName") Integer lastName,
+                                   @RequestParam("email") Integer email
+                                    ) {
         Employees e = new Employees();
-
-//        Departement de = new Departement();
 
         Employees em = employeeRepository.getOne(employeeId);
 
-//        Departement dpm = departementRepository.getOne(departementId);
         //init
         e.setEmployeeId(em.getEmployeeId());
         e.setFirstName(em.getFirstName());
         e.setLastName(em.getLastName());
         e.setEmail(em.getEmail());
         e.setUserId(em.getUserId());
-        //e.setDepartementId(em.getDepartementId());
-//        de.setDepartementId(dpm.getDepartementId());
-//        de.setDepartementName(dpm.getDepartementName());
-
-
-
+        e.setDepartementId(em.getDepartementId());
         return e;
     }
 }

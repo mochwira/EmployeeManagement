@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 @RestController
 public class ProjectRestController {
 
@@ -16,7 +18,7 @@ public class ProjectRestController {
     private ProjectRepository projectRepository;
 
     @GetMapping("/findproject")
-    public Project createFindOne(@RequestParam("projectId") Long projectId) {
+    public Project createFindOne(@RequestParam("projectId") Long projectId,@RequestParam("durasiProject") Date durasiProject) {
         Project p = new Project();
         Project pj = projectRepository.getOne(projectId);
 

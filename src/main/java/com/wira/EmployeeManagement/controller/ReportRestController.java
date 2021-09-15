@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 @RestController
 public class ReportRestController {
 
@@ -20,7 +22,14 @@ public class ReportRestController {
     public KategoriRepository kategoriRepository;
 
     @GetMapping("/findreport")
-    public Reports createFindOne(@RequestParam("reportId") Long reportId, Integer kategoriId) {
+    public Reports createFindOne(@RequestParam("reportId") Long reportId,
+                                 @RequestParam("kategoriId") Integer kategoriId,
+                                 @RequestParam("reportTime") Date reportTime,
+                                 @RequestParam("reportName") String reportName,
+                                 @RequestParam("employeeId") Integer employeeId,
+                                 @RequestParam("projectId") Long projectId,
+                                 @RequestParam("reportDetail") String reportDetail
+                                 ) {
         Reports r = new Reports();
 
         Reports rp = reportRepository.getOne(reportId);
@@ -30,12 +39,10 @@ public class ReportRestController {
         r.getReportId();
         r.setReportName(rp.getReportName());
         r.setKategoriId(rp.getKategoriId());
-        r.setKategoriId(rp.getKategoriId());
         r.setEmployeeId(rp.getEmployeeId());
         r.setProjectId(rp.getProjectId());
         r.setReportDetail(rp.getReportDetail());
         r.setReportTime(rp.getReportTime());
-        r.setEmployeeId(rp.getEmployeeId());
 
         return r;
     }

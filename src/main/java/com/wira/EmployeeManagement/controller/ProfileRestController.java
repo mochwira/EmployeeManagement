@@ -14,7 +14,12 @@ public class ProfileRestController {
     private ProfileRepository profileRepository;
 
     @GetMapping("/findprofile")
-    public User createFindOne(@RequestParam("userId") Long userId) {
+    public User createFindOne(
+            @RequestParam("userId") Long userId,
+            @RequestParam("firstName") String firstName,
+            @RequestParam("lastName") String lastName,
+            @RequestParam("email") Long email,
+            @RequestParam("password") Long password) {
         User up = new User();
         User usp = profileRepository.getOne(userId);
 
