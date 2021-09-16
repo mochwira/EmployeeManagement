@@ -119,6 +119,27 @@
                                         <td th:if="${#fields.hasErrors('employeeId')}" th:errors="*{employeeId}">Name Error</td>
                                     </div>
 
+<!--                                    <label>Employee<span class="redColor">*</span></label>-->
+<!--                                    <select th:field="*{employeeId}" class="form-control" required>-->
+<!--                                        <option value="">Pilih</option>-->
+<!--                                        <option-->
+<!--                                                th:each="r : ${reports}"-->
+<!--                                                th:value="${r.employeeId}"-->
+<!--                                                th:text="${r.employeeId.firstName}">-->
+<!--                                        </option>-->
+<!--                                    </select>-->
+
+                                    <label>Project<span class="redColor">*</span></label>
+                                    <select th:field="*{projectId}" class="form-control" required>
+                                        <option value="">Pilih</option>
+                                        <option
+                                                th:each="r : ${reports}"
+                                                th:value="${r.projectId}"
+                                                th:text="${r.projectId.namaProject}">
+                                        </option>
+                                    </select>
+
+
                                     <div class="form-group">
                                         <label for="reportName" class=" label">Nama Report</label>
                                         <td>
