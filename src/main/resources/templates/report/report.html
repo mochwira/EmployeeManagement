@@ -8,11 +8,16 @@
     <link rel="icon" th:href="@{/img/menu.png}"/>
 
     <!--    Date Format-->
+    <link th:rel="stylesheet" th:href="@{/assets/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>
+
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     <script th:src="@{/assets/moment/moment.min.js}"></script>
     <script th:src="@{/assets/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.js}"></script>
+
 
 
     <!--Online-->
@@ -119,15 +124,6 @@
                                         <td th:if="${#fields.hasErrors('employeeId')}" th:errors="*{employeeId}">Name Error</td>
                                     </div>
 
-<!--                                    <label>Employee<span class="redColor">*</span></label>-->
-<!--                                    <select th:field="*{employeeId}" class="form-control" required>-->
-<!--                                        <option value="">Pilih</option>-->
-<!--                                        <option-->
-<!--                                                th:each="r : ${reports}"-->
-<!--                                                th:value="${r.employeeId}"-->
-<!--                                                th:text="${r.employeeId.firstName}">-->
-<!--                                        </option>-->
-<!--                                    </select>-->
 
                                     <label>Project<span class="redColor">*</span></label>
                                     <select th:field="*{projectId}" class="form-control" required>
@@ -160,7 +156,7 @@
 
 
                                     <div class="form-group">
-                                        <label for="date">Waktu</label>
+                                        <label for="date">Waktu Report</label>
                                         <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
                                             <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"
                                                    th:field="*{reportTime}" id="date" placeholder="Date"/>
@@ -179,17 +175,6 @@
                                         <td th:if="${#fields.hasErrors('reportDetail')}" th:errors="*{reportDetail}">Detail Error</td>
                                     </div>
 
-<!--                                    <div class="form-group">-->
-<!--                                        <label for="reportTime" class=" label">Waktu</label>-->
-<!--                                        <td>-->
-<!--                                            <input type="text" class="form-control" id="reportTime" name="reportTime" value="" th:field="*{reportTime}">-->
-<!--                                        </td>-->
-<!--                                    </div>-->
-
-<!--                                    <div class="mb-3">-->
-<!--                                        <label for="formFileMultiple" class="form-label">Upload File Report</label>-->
-<!--                                        <input class="form-control" type="file" id="formFileMultiple" multiple>-->
-<!--                                    </div>-->
 
                                 </div>
                                 <div class="modal-footer">

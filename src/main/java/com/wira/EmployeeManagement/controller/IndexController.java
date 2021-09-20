@@ -16,12 +16,12 @@ public class IndexController {
     @GetMapping
     public String main(Model model) {
         model.addAttribute("event", new EventCustom());
-        return "event";
+        return "/event.html";
     }
 
     @PostMapping
     public String save(EventCustom event, Model model) {
         model.addAttribute("event", event);
-        return "saved";
+        return "/saved.html";
     }
 }

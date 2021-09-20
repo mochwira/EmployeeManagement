@@ -11,7 +11,7 @@ public class NotificationController {
     @GetMapping("/notification")
     public String getNotification(Model model) {
 
-        System.out.println("ini notification");
+        System.out.println("notice");
         return "notification/notification.html";
     }
 }
